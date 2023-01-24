@@ -70,6 +70,7 @@ const roomsRouter = require('./routes/rooms/rooms');
 app.use('/rooms', roomsRouter);
 
 const usersRouter = require('./routes/users/users');
+const pool = require('./database');
 app.use('/users', usersRouter);
 
 
@@ -81,10 +82,36 @@ app.post('/register', async (req, res) => {
 
     let { user_name, email, password } = req.body;
 
-    // Error handling here ?
+    try {
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    // Debug console.log('hashedPassword', hashedPassword)
+        const hashedPassword = await bcrypt.hash(password, 10);
+        // Debug console.log('hashedPassword', hashedPassword)
+        pool.query(`select * from users where email=${email}`, (err, result) => {
+
+            if (err) { throw err };
+
+            if (result.rows.length > 0) {
+
+                res.status(409).send({ message: 'User already registered' });
+
+            } else {
+
+                pool.query(`insert into users(user_name,email,user_password) values('${user_name}','${email}','${hashedPassword}')`, (err, result) => {
+
+                    if (err) throw err
+
+                    // res.redirect('/login') will do login later
+
+                })
+
+            }
+        })
+
+
+    } catch (error) {
+        console.error(error.message);
+    }
+
 
 })
 

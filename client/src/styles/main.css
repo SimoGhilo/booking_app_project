@@ -1,0 +1,19 @@
+.cities {
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+margin-top: 5rem;
+justify-content: space-around;
+}
+
+.city{
+
+}
+
+.city img{
+    width: 18rem;
+}
+
+.countries {
+    display: flex;
+}
