@@ -33,5 +33,25 @@
 
 .field{
     margin: 1rem;
+    
+}
+
+.field input{
+    height: 1.8rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.field button{
+    width: 4.5rem;
+    height: 2.3rem;
+    background-color:wheat;
+    border-radius: 5%;
+}
+
+
+.field button:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    color: wheat;
 }
 

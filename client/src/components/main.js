@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/main.css';
 
 
@@ -6,7 +7,8 @@ import '../styles/main.css';
 const Main = () => {
 
     let [cities, setCities] = useState([]);
-    let [countries, setCountries] = useState([]);
+
+
 
     useEffect(() => {
         fetch('http://localhost:5000/locations').then((response) => {
@@ -18,20 +20,32 @@ const Main = () => {
 
     return (
         <div>
+            <h4 class="cities">Popular destinations</h4>
             <div className='cities'>
                 {
-                    cities.map((city) => (
+                    cities.slice(0, 4).map((city) => (
                         <div className='city'>
                             <img src={city.img} />
-                            <figcaption>{city.location_name}</figcaption>
+                            <figcaption><Link style={{ textDecoration: "none", color: "black" }} to={`/${city.location_name}`}>{city.location_name}</Link></figcaption>
                         </div>
                     ))
 
                 }
             </div>
-            <br />
+            <h4 class="cities">Destinations by country</h4>
             <div className='countries'>
+                {
+                    cities.slice(4, 8).map((city) => (
+                        <div className='country'>
+                            <Link to={`/${city.country}`}><img src={city.img} /></Link>
+                            <span className='text'>{city.country}</span>
 
+                            <div className='flag' style={{ backgroundImage: `url('${city.country_flag}')` }}></div>
+                            {/*flag not showing up*/}
+                        </div>
+                    ))
+
+                }
             </div>
         </div>
     );

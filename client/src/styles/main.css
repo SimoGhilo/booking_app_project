@@ -7,13 +7,56 @@ justify-content: space-around;
 }
 
 .city{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+text-align: center;
 
 }
 
 .city img{
     width: 18rem;
+    height: 10rem;
+    box-shadow: 1px 1px gray;
+    border-radius: 5%;
+}
+
+.city figcaption{
+    font-family: 'Fjalla One', sans-serif;
+    margin-top: 1rem;
+    text-shadow: 1.2px 1.2px gray;
+    font-size: 1.5rem;
 }
 
 .countries {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.country{
+    text-align: center;
+    position: relative;
+}
+
+.country img {
+    width: 30rem;
+    height: 20rem;
+    box-shadow: 1px 1px black;
+}
+
+h4{
+    margin-bottom: 4rem;
+    font-family: 'Gloria Halleleluja', cursive;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px gray;
+}
+
+.text{
+    position: absolute;
+    left: 6rem;
+    font-family: 'Fjalla One', sans-serif;
+    top: 0.65rem;
+    text-shadow: 2px 2px gray;
 }

@@ -100,7 +100,7 @@ app.post('/register', async (req, res) => {
 
                     if (err) throw err
 
-                    // res.redirect('/login') will do login later
+                    res.redirect('/login')
 
                 })
 

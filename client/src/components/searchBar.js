@@ -13,7 +13,7 @@ const SearchBar = () => {
                     <input type='date' className='input' placeholder='When ?' />
                 </div>
                 <div className='field'>
-                    <input type='number' className='input' placeholder='1' />
+                    <input type='number' className='input' placeholder='Number of guests' />
                 </div>
                 <div className='field'>
                     <button>Search</button>

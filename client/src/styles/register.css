@@ -1,0 +1,42 @@
+.registration{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h2{
+    font-family: 'Gloria Halleleluja', cursive;
+}
+
+.registration div {
+    margin-top: 0.5rem;
+}
+
+.info input{
+    width: 17rem;
+    height: 2.5rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.1rem;
+}
+
+.registration button {
+    margin-top: 2rem;
+    background-color:hsl(244, 100%, 65%);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5%;
+
+}
+
+.registration button:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    color: wheat;
+}
