@@ -55,3 +55,33 @@
     color: wheat;
 }
 
+
+.hotel-results{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items:center;
+}
+
+.property{
+    margin-top: 3rem;
+    display: flex;
+    width: 75%;
+    box-shadow: 2px 2px 2px 2px  gray;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.property-pic {
+    width: 25rem;
+    height: 15rem;
+}
+
+.property figcaption{
+    margin-left: 14rem;
+    margin-top: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large
+}
+

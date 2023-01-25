@@ -1,11 +1,12 @@
 import './App.css';
 import { Route, Routes, Link, Redirect, Navigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from "./components/searchBar";
 import Main from './components/main';
 import Login from './components/login';
 import Register from './components/register';
+import { setLoginStatus } from './slice/loginSlice';
 
 let linkStyle = { textDecoration: "none", color: "white" };
 
@@ -14,7 +15,8 @@ function App() {
   // fetching redux status
   let user = useSelector(state => state.loginStatus.user)
   let loginStatus = useSelector(state => state.loginStatus.isLoggedIn)
-  console.log(loginStatus)
+
+  const dispatch = useDispatch();
 
   const [isActive, setIsActive] = useState(false);
 
@@ -22,12 +24,43 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [avatar, setAvatar] = useState({});
 
+
+
   useEffect(() => {
-    if (loginStatus) {
-      setIsLoggedIn(loginStatus)
+    async function fetchLogin() {
+      let result = await login().then((result) => {
+        return result
+      })
+      // Error around here -- Session is not kept opened
+      console.log(result);
+      dispatch(setLoginStatus(result.loggedIn))
+    };
+
+    if (loginStatus == true) {
+      setIsLoggedIn(true)
+      fetchLogin()
       setAvatar(user)
     }
-  }, [loginStatus, isLoggedIn, isActive, avatar])
+  }, [loginStatus, dispatch])
+
+  async function login() {
+    const url = 'http://localhost:5000/isLoggedIn';
+    let result = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'include'
+    })
+
+    result = result.json();
+    return result;
+  }
+
+
 
 
   return (
@@ -36,17 +69,17 @@ function App() {
         <div className="logo"><Link to={'/'} onClick={() => setIsActive(false)}><img src='https://cdn-icons-png.flaticon.com/512/201/201623.png' /></Link></div>
         <h1 className="title">Travel.com</h1>
         {
-          /*!isLoggedIn && */ (<ul className='menu'>
+          !isLoggedIn && (<ul className='menu'>
             <li className="link"><Link style={linkStyle} to='/login' onClick={() => setIsActive(true)}>Log-in</Link></li>
             <li className="link"><Link style={linkStyle} to='/register' onClick={() => setIsActive(true)}>Register</Link></li>
           </ul>)
         }
-        { /*
+        {
           isLoggedIn && (
             <div className="avatar">
-              <h6> Hi avatar.user_name!</h6>
+              <h6 className='avatarName'>Hi {avatar.user_name} !</h6>
             </div>
-          ) */
+          )
         }
 
       </nav>

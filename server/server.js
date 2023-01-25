@@ -119,12 +119,28 @@ app.post('/login', passport.authenticate('local', {}), (req, res) => {
 
     if (req.session.passport.user) {
         // debug
-        console.log(req.session.passport.user)
+        //console.log(req.session.passport.user)
         res.send({ loggedIn: true, user: req.session.passport.user })
     } else {
         res.send({ loggedIn: false, message: 'Error authent' })
     }
 })
+
+
+/// keep the session open
+
+app.get('/isLoggedIn', (req, res) => {
+    console.log('In isLoggedIn', req.session?.passport?.user);
+    if (req.session?.passport?.user) {
+
+        res.send({ loggedIn: true, user: req.session.passport.user });
+
+    } else {
+        res.send({ loggedIn: false });
+
+    }
+
+});
 
 
 

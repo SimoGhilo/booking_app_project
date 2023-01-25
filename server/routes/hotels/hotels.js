@@ -8,11 +8,11 @@ const controller = require('./controller');
 
 //get hotels by name
 
-hotelsRouter.get('/', controller.getHotelsByLocationName)
+hotelsRouter.get('/:location', controller.getHotelsByLocationName)
 
 // get hotel by id
 
-hotelsRouter.get('/:id', controller.getHotelById)
+//hotelsRouter.get('/:id', controller.getHotelById)
 
 
 
