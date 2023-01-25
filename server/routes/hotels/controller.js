@@ -28,9 +28,9 @@ const getHotelById = (req, res) => {
 
 
 const getHotelsByLocationName = (req, res) => {
-    const name = req.params.name || req.body.name;  /// Will come back later, request from body from FE?
+    const location = req.body.location;
     try {
-        const query = `select * from hotels where location_name='${name}'`;
+        const query = `select * from hotels where location_name='${location}'`;
         pool.query(query, (err, result) => {
             // Debugging - console.log(query)
             res.status(200).json(result.rows)

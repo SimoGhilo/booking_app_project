@@ -1,27 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/register.css';
 var bcrypt = require('bcryptjs');
 
-const Register = () => {
+const Register = (props) => {
+
+
+    const setIsActive = props.setIsActive;
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const [registered, setRegistered] = useState(false)
+
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (registered) {
+            navigate('/');
+            setIsActive(false);
+        }
+    }, [registered]);
+
     async function register() {
         const hashedPassword = await bcrypt.hash(password, 10);
-        // Debugging here : passowrd and name undefined
-        console.log(hashedPassword)
-        console.log(username)
-        /// HERE      --------------------------------
+
         const url = 'http://localhost:5000/users'
         const payload = {
-            username: username,
+            user_name: username,
             email: email,
-            password: hashedPassword
+            user_password: hashedPassword
         }
 
-        let result = await fetch(url, {
+        await fetch(url, {
             method: 'POST',
             credentials: 'include',
             mode: 'cors',
@@ -30,10 +43,10 @@ const Register = () => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(payload)
-        })
 
-        result = await result.json();
-        console.log(result)
+        })
+        setRegistered(true);
+
     }
 
 

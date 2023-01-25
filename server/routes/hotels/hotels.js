@@ -8,7 +8,7 @@ const controller = require('./controller');
 
 //get hotels by name
 
-hotelsRouter.get('/:name', controller.getHotelsByLocationName)
+hotelsRouter.get('/', controller.getHotelsByLocationName)
 
 // get hotel by id
 
