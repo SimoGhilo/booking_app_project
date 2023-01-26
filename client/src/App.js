@@ -6,7 +6,7 @@ import SearchBar from "./components/searchBar";
 import Main from './components/main';
 import Login from './components/login';
 import Register from './components/register';
-import { setLoginStatus } from './slice/loginSlice';
+import { setLoginStatus, setUser } from './slice/loginSlice';
 
 let linkStyle = { textDecoration: "none", color: "white" };
 
@@ -31,14 +31,15 @@ function App() {
       let result = await login().then((result) => {
         return result
       })
-      // Error around here -- Session is not kept opened
-      console.log(result);
+      // Error around here -- Session is not kept opened - Harry has to check it
+      //console.log(result);
       dispatch(setLoginStatus(result.loggedIn))
+      dispatch(setUser(result.user));
     };
-
+    fetchLogin()
     if (loginStatus == true) {
       setIsLoggedIn(true)
-      fetchLogin()
+
       setAvatar(user)
     }
   }, [loginStatus, dispatch])
