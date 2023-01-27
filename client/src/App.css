@@ -56,6 +56,21 @@
     text-shadow: 2px 2px 2px black;
 }
 
+.linkProfile {
+    text-decoration: none;
+    color: black;
+}
+
+.linkProfile:hover{
+    color: beige;
+    
+}
+
+.linkProfile:active{
+    color: beige;
+    text-shadow: 1px 1px 1px black;
+}
+
 footer{
     margin-top: 3rem;
     background-color: hsl(345, 72%, 70%);

@@ -6,9 +6,11 @@ import SearchBar from "./components/searchBar";
 import Main from './components/main';
 import Login from './components/login';
 import Register from './components/register';
+import Profile from './components/profile';
 import { setLoginStatus, setUser } from './slice/loginSlice';
 
 let linkStyle = { textDecoration: "none", color: "white" };
+
 
 function App() {
 
@@ -31,8 +33,7 @@ function App() {
       let result = await login().then((result) => {
         return result
       })
-      // Error around here -- Session is not kept opened - Harry has to check it
-      //console.log(result);
+
       dispatch(setLoginStatus(result.loggedIn))
       dispatch(setUser(result.user));
     };
@@ -78,7 +79,7 @@ function App() {
         {
           isLoggedIn && (
             <div className="avatar">
-              <h6 className='avatarName'>Hi {avatar.user_name} !</h6>
+              <h6 className='avatarName'><Link to={"/Profile"} className="linkProfile" onClick={() => setIsActive(true)}>Hi {avatar.user_name} !</Link></h6>
             </div>
           )
         }
@@ -86,6 +87,7 @@ function App() {
       </nav>
       {
         <Routes>
+          <Route path={"/Profile"} element={<Profile />}></Route>
           <Route path='/login' element={<Login setIsActive={setIsActive} />}></Route>
           <Route path='/register' element={<Register isActive={isActive} setIsActive={setIsActive} />}></Route>
         </Routes>

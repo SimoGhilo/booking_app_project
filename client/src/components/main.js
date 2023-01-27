@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import '../styles/main.css';
 
 
@@ -42,9 +42,11 @@ const Main = () => {
 
                             <div className='flag' style={{ backgroundImage: `url('${city.country_flag}')` }}></div>
                             {/*flag not showing up*/}
+                            <Routes>
+                                <Route path={`/${city.country}`}></Route>
+                            </Routes>
                         </div>
                     ))
-
                 }
             </div>
         </div>
