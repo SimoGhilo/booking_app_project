@@ -59,7 +59,7 @@ const SearchBar = (props) => {
                                         <figcaption><strong>{prop.hotel_name}</strong></figcaption>
                                         <p className='place'>{prop.location_name}</p>
                                         <p>{prop.hotel_description}</p>
-                                        <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}`} /* target="_blank" */ >View Hotel</Link></button>
+                                        <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}`} target="_blank" >View Hotel</Link></button>
                                     </section>
                                 </div>
                             </>))}

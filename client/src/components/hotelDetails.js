@@ -27,8 +27,18 @@ const HotelDetails = (props) => {
     return (
         <div>
             <h2>{hotel_name}</h2>
-            {Object.keys(rooms).map((room) => (
-                <h3>{rooms[room].room_name}</h3>))
+            { /*hotel_name != undefined && <p>{props.location}</p>*/}
+            {Object.keys(rooms).map((key) => (
+                <>
+                    <div class="property-carousel">
+
+                    </div>
+                    <div className='room-container'>
+                        <h3>{rooms[key].room_name}</h3>
+                    </div>
+                </>
+            ))
+
             }
 
 
