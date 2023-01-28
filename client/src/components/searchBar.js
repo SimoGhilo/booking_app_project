@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import HomeHouse from './properties/homeHouse';
+import HotelDetails from './hotelDetails'
 import '../styles/searchBar.css';
 
 let linkStyle = { textDecoration: "none", color: "black" };
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
     const navigate = useNavigate()
 
@@ -28,12 +28,6 @@ const SearchBar = () => {
     }, [location])
 
 
-
-
-
-
-
-
     return (
         <>
             <div className='bar'>
@@ -53,32 +47,28 @@ const SearchBar = () => {
                     </div>
                 </div>
             </div>
-            {properties.length >= 1 && (<>
-                <div className='result-title'><h5>{location}: {properties.length} properties found</h5></div>
-                <div className='hotel-results'>
-                    {properties.map(prop => (<div className="property">
-                        <img className="property-pic" src={prop.hotel_img} />
-                        <section className="description-property">
-                            <figcaption><strong>{prop.hotel_name}</strong></figcaption>
-                            <p className='place'>{prop.location_name}</p>
-                            <p>{prop.hotel_description}</p>
-                            <button className='showPrices'><Link style={linkStyle} to={`/${(prop.hotel_name).split(" ").join("")}`} /* target="_blank" */>Show Prices</Link></button>
-                        </section>
-                    </div>))}
-                </div></>)}
-            {/* Harry has to check why the search bar does not disappear when the field is cleared. image carousel */}
+            {properties.length >= 1 && (
+                <>
+                    <div className='result-title'><h5>{location}: {properties.length} properties found</h5></div>
+                    <div className='hotel-results'>
+                        {properties.map(prop => (
+                            <>
+                                <div className="property">
+                                    <img className="property-pic" src={prop.hotel_img} />
+                                    <section className="description-property">
+                                        <figcaption><strong>{prop.hotel_name}</strong></figcaption>
+                                        <p className='place'>{prop.location_name}</p>
+                                        <p>{prop.hotel_description}</p>
+                                        <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}`} /* target="_blank" */ >View Hotel</Link></button>
+                                    </section>
+                                </div>
+                            </>))}
+                    </div>
+                </>)}
             <Routes>
-                {/*<Route path={`/HomeHouse`} element={<HomeHouse />} />*/}
-                {properties.map((prop) => (
-                    <>
-                        <Route path={`/${(prop.hotel_name).split(" ").join("")}`} element={`<${(prop.hotel_name).split(" ").join("")}/>`}></Route>
-                        {/* How to display pages dynamically ? */}
-                    </>
-
-                ))
-
-                }
+                <Route path='/:hotel_name' element={<HotelDetails />}></Route>
             </Routes>
+            <HotelDetails location={location} />
         </>
     );
 };

@@ -7,8 +7,7 @@ import '../styles/login.css';
 const Login = (props) => {
 
     const dispatch = useDispatch();
-    /* Testing redux status -- let isLoggedIn = useSelector(state => state.loginStatus.isLoggedIn);
-     console.log(isLoggedIn); */
+
 
 
     const navigate = useNavigate();
@@ -24,8 +23,8 @@ const Login = (props) => {
         if (isloggedin) {
             // toggling login status in redux store
             dispatch(setLoginStatus(true))
-            // toggling login status in local state
-            setIsActive(false);
+            // toggling active status in app top component
+            setIsActive(true);
             navigate('/')
         }
     }, [isloggedin, dispatch])

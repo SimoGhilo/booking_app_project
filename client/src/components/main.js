@@ -45,6 +45,7 @@ const Main = () => {
                             <Routes>
                                 <Route path={`/${city.country}`}></Route>
                             </Routes>
+                            {/*image carousel */}
                         </div>
                     ))
                 }

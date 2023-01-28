@@ -71,29 +71,8 @@
     text-shadow: 1px 1px 1px black;
 }
 
-footer{
-    margin-top: 3rem;
-    background-color: hsl(345, 72%, 70%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-}
 
-.sponsors{
-    display: inline-flex;
-    justify-content: end;
-    
-}
 
-.lower{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.bottom {
-    width: 8rem;
-    margin-left: 1rem;
-}
 
 

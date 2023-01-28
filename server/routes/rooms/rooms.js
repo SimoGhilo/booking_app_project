@@ -6,7 +6,7 @@ const controller = require('./controller');
 
 roomsRouter.get('/', controller.getRooms)
 
-roomsRouter.get('/:id', controller.getRoomsByHotelId)
+roomsRouter.get('/:hotel_name', controller.getRoomsByHotelName)
 
 
 module.exports = roomsRouter;
