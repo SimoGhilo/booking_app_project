@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Carousel from 'react-elastic-carousel';
+import '../styles/hotelDetails.css';
 
 const HotelDetails = (props) => {
 
     let [rooms, setRooms] = useState([]);
 
-    let { hotel_name } = useParams()
 
-    console.log(rooms) /* Looks as if the data is disappearing after a while from the console */
+    let { hotel_name } = useParams()
 
 
 
@@ -23,26 +24,24 @@ const HotelDetails = (props) => {
     }, [hotel_name])
 
 
-
     return (
-        <div>
+        <>
             <h2>{hotel_name}</h2>
-            { /*hotel_name != undefined && <p>{props.location}</p>*/}
-            {Object.keys(rooms).map((key) => (
-                <>
-                    <div class="property-carousel">
+            <Carousel className='carousel' >
+                {Object.keys(rooms).map((key) => (
+                    <>
 
-                    </div>
-                    <div className='room-container'>
-                        <h3>{rooms[key].room_name}</h3>
-                    </div>
-                </>
-            ))
-
-            }
+                        <div className='room-container'>
+                            <h2>{rooms[key].room_name}</h2>
+                            <img src={rooms[key].room_img_1} />
+                        </div>
 
 
-        </div>
+                    </>
+                ))}
+            </Carousel>
+            {/* carousel displays two rows  */}
+        </>
     );
 };
 

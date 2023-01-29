@@ -68,7 +68,7 @@ const SearchBar = (props) => {
             <Routes>
                 <Route path='/:hotel_name' element={<HotelDetails />}></Route>
             </Routes>
-            <HotelDetails location={location} />
+            <HotelDetails />
         </>
     );
 };
