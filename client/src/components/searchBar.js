@@ -4,18 +4,34 @@ import { useNavigate } from 'react-router-dom';
 import HotelDetails from './hotelDetails'
 import '../styles/searchBar.css';
 
+
+// Date range picker 
+
+import { Calendar, DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
+const selectionRange = {
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection',
+}
+
+
 let linkStyle = { textDecoration: "none", color: "black" };
 
 const SearchBar = (props) => {
 
     const navigate = useNavigate()
 
+    const todaysDate = new Date();
+
     const [location, setLocation] = useState('');
-    const [date, setDate] = useState(''); // set todays date
+    const [date, setDate] = useState(todaysDate); // set todays date
     const [guests, setGuests] = useState(0);
 
     const [properties, setProperties] = useState([]);
-    //console.log(properties);
+    console.log(date);
 
 
     useEffect(() => {
@@ -37,7 +53,11 @@ const SearchBar = (props) => {
                         <input type='text' className='input' placeholder='Where to ?' onChange={(e) => setLocation(e.target.value)} required />
                     </div>
                     <div className='field'>
-                        <input type='date' className='input' placeholder='When ?' onClick={(e) => setDate(e.target.value)} required />
+                        {/*<input type='date' className='input' placeholder={todaysDate} onClick={(e) => setDate(e.target.value)} required />*/}
+                        <Calendar
+                            /*ranges={[selectionRange]} */
+                            onChange={(e) => setDate(e.target.value)}
+                        />
                     </div>
                     <div className='field'>
                         <input type='number' className='input' placeholder='Number of guests' onClick={(e) => setGuests(e.target.value)} required />

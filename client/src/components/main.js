@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import '../styles/main.css';
 
+import Carousel from "react-elastic-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 
 const Main = () => {
 
     let [cities, setCities] = useState([]);
+
 
 
 
@@ -22,15 +25,16 @@ const Main = () => {
         <div>
             <h4 class="cities">Popular destinations</h4>
             <div className='cities'>
-                {
-                    cities.slice(0, 4).map((city) => (
-                        <div className='city'>
-                            <img src={city.img} />
-                            <figcaption><Link style={{ textDecoration: "none", color: "black" }} to={`/${city.location_name}`}>{city.location_name}</Link></figcaption>
-                        </div>
-                    ))
-
-                }
+                <Carousel itemsToShow={3}>
+                    {
+                        cities.map((city) => (
+                            <div className='city'>
+                                <img src={city.img} />
+                                <figcaption><Link style={{ textDecoration: "none", color: "black" }} to={`/${city.location_name}`}>{city.location_name}</Link></figcaption>
+                            </div>
+                        ))
+                    }
+                </Carousel>
             </div>
             <h4 class="cities">Destinations by country</h4>
             <div className='countries'>

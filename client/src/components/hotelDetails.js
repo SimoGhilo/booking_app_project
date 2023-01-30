@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Carousel from 'react-elastic-carousel';
 import '../styles/hotelDetails.css';
 
 const HotelDetails = (props) => {
@@ -26,21 +25,41 @@ const HotelDetails = (props) => {
 
     return (
         <>
-            <h2>{hotel_name}</h2>
-            <Carousel className='carousel' >
-                {Object.keys(rooms).map((key) => (
+            <div className='content'>
+                {Object.keys(rooms).splice(0, 1).map((key) => (
                     <>
-
                         <div className='room-container'>
-                            <h2>{rooms[key].room_name}</h2>
+                            <h2>{hotel_name}</h2>
+                            <p className='description'>{rooms[key].hotel_description_2}</p>
                             <img src={rooms[key].room_img_1} />
+                            <img src={rooms[key].room_img_2} />
+                            <img src={rooms[key].room_img_3} />
+                            <img src={rooms[key].hotel_img} />
                         </div>
-
-
+                        <h2 className='availability'>Availability</h2>
+                        <div className='table-wrapper'>
+                            <table>
+                                <tr className='header'>
+                                    <th><p>Room Type</p></th>
+                                    <th><p>Room Capacity</p></th>
+                                    <th><p>Price per night</p></th>
+                                    <th><p>Reserve</p></th>
+                                </tr>
+                                {Object.keys(rooms).map((key) => (
+                                    <>
+                                        <tr>
+                                            <td><p>{rooms[key].room_name}</p></td>
+                                            <td><p>{rooms[key].room_capacity}</p></td>
+                                            <td><p> £ {rooms[key].room_rate}</p></td>
+                                            <button className='book'>Book</button>
+                                        </tr>
+                                    </>
+                                ))}
+                            </table>
+                        </div>
                     </>
                 ))}
-            </Carousel>
-            {/* carousel displays two rows  */}
+            </div>
         </>
     );
 };

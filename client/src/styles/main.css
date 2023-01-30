@@ -2,8 +2,10 @@
 display: flex;
 flex-direction: row;
 flex-wrap: nowrap;
-margin-top: 5rem;
+margin-top: 4rem;
 justify-content: space-around;
+margin-left: 1rem;
+margin-right: 1rem;
 }
 
 .city{
@@ -15,8 +17,8 @@ text-align: center;
 }
 
 .city img{
-    width: 18rem;
-    height: 10rem;
+    width: 25rem;
+    height: 15rem;
     box-shadow: 1px 1px gray;
     border-radius: 5%;
 }
@@ -27,6 +29,24 @@ text-align: center;
     text-shadow: 1.2px 1.2px gray;
     font-size: 1.5rem;
 }
+
+/* Carousel */
+
+
+.rec.rec-arrow {
+    border-radius: 0;
+}
+
+.rec.rec-arrow:hover {
+    border-radius: 50%;
+}
+
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
+
+
+/*--------------------------*/
 
 .countries {
     display: flex;
