@@ -6,7 +6,6 @@ const HotelDetails = (props) => {
 
     let [rooms, setRooms] = useState([]);
 
-
     let { hotel_name } = useParams()
 
 
@@ -15,7 +14,6 @@ const HotelDetails = (props) => {
         let url = `http://localhost:5000/rooms/${hotel_name}`
         fetch(url).then((response) => {
             response.json().then((data) => {
-                // console.log('data here', data);
                 setRooms(data)
             });
         });
@@ -42,16 +40,19 @@ const HotelDetails = (props) => {
                                 <tr className='header'>
                                     <th><p>Room Type</p></th>
                                     <th><p>Room Capacity</p></th>
-                                    <th><p>Price per night</p></th>
+                                    <th><p>Total Price</p></th>
                                     <th><p>Reserve</p></th>
                                 </tr>
                                 {Object.keys(rooms).map((key) => (
                                     <>
                                         <tr>
-                                            <td><p>{rooms[key].room_name}</p></td>
-                                            <td><p>{rooms[key].room_capacity}</p></td>
-                                            <td><p> £ {rooms[key].room_rate}</p></td>
-                                            <button className='book'>Book</button>
+                                            {rooms[key].room_capacity >= props.guests && (
+                                                <>
+                                                    <td><p>{rooms[key].room_name}</p></td>
+                                                    <td><p>{rooms[key].room_capacity}</p></td>
+                                                    <td><p> £ {(rooms[key].room_rate) * props.lengthStay}</p></td>
+                                                    <button className='book'>Book</button>
+                                                </>)}
                                         </tr>
                                     </>
                                 ))}

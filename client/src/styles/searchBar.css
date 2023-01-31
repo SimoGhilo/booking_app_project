@@ -25,10 +25,17 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content:center;
+    align-items: center;
     width: 75%;
     border-radius: 2%;
     margin-bottom: 15rem;
 
+}
+
+.searchBar p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: larger;
 }
 
 .field{
@@ -39,6 +46,12 @@
 .field input{
     height: 1.8rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+.field .inputNumber {
+    width: 4rem;
+    text-align: center;
 }
 
 .field button{
