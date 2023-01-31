@@ -2,20 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import HotelDetails from './hotelDetails'
+import Checkout from './checkout';
 import '../styles/searchBar.css';
-
-
-// Date range picker 
-
-import { Calendar, DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-
-const selectionRange = {
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection',
-}
 
 
 let linkStyle = { textDecoration: "none", color: "black" };
@@ -116,6 +104,7 @@ const SearchBar = (props) => {
                 </>)}
             <Routes>
                 <Route path='/:hotel_name' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} />}></Route>
+                <Route path={'/:hotel_id/:room_id/checkout'} element={<Checkout lengthStay={lengthStay} startDate={startDate} endDate={endDate} />} />
             </Routes>
             <HotelDetails />
         </>

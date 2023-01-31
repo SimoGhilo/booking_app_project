@@ -26,8 +26,24 @@ const getRoomsByHotelName = (req, res) => {
     }
 };
 
+const getRoomByRoomId = (req, res) => {
+    const hotel_id = req.params.hotel_id
+    const room_id = req.params.room_id;
+    const query = `select * from rooms  where room_id=${room_id} and hotel_id=${hotel_id}`;
+    try {
+        pool.query(query, (err, result) => {
+            if (err) { console.error(err); }
+            res.status(200).json(result.rows)
+        })
+
+    } catch (error) {
+        console.error(error.message);
+    }
+
+}
+
 
 
 module.exports = {
-    getRooms, getRoomsByHotelName
+    getRooms, getRoomsByHotelName, getRoomByRoomId
 }
