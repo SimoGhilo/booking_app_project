@@ -144,6 +144,31 @@ app.get('/isLoggedIn', (req, res) => {
 
 
 
+/// Book a room
+
+app.post(`/:hotel_id/:room_id/checkout`, async (req, res) => {
+
+    let { hotel_id, room_id } = req.params;
+
+    let { check_in_date, check_out_date, user_id } = req.body;
+
+    try {
+        let query = `insert into bookings(user_id, hotel_id, room_id, check_in_date, check_out_date) values(${user_id},${hotel_id},${room_id},${check_in_date},${check_out_date})`;
+        console.log(query);
+        pool.query(query, (err, result) => {
+
+            if (err) { console.log(err); }
+            res.status(200).send(result.rows);
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+
+})
+
+
+
 //Testing
 
 app.listen(PORT, () => {

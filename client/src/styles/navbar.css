@@ -1,0 +1,71 @@
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    background-color: hsl(345, 72%, 70%)
+}
+
+.menu{  
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.avatar{
+    position: relative;
+    font-family: 'Gloria Halleleluja', cursive;
+    top: -0.4rem;
+
+}
+
+.avatarName{
+    font-size: 1.2rem;
+}
+
+.logo{
+    position: relative;
+    top: 0.10rem;
+    justify-self: flex-end;
+
+}
+
+.title{
+    margin-top: 2rem;
+    font-family: 'Gloria Halleleluja', cursive;
+    color: antiquewhite;
+    margin-left: 4rem;
+}
+
+.logo img{
+    width: 6rem;
+}
+
+.link{
+    position: relative;
+    margin-left: 1rem;
+    top: 1.5rem;
+    text-decoration: none;
+    font-family: 'Gloria Halleleluja', cursive;
+    
+}
+
+.link:hover{
+    text-shadow: 2px 2px 2px black;
+}
+
+.linkProfile {
+    text-decoration: none;
+    color: black;
+}
+
+.linkProfile:hover{
+    color: beige;
+    
+}
+
+.linkProfile:active{
+    color: beige;
+    text-shadow: 1px 1px 1px black;
+}

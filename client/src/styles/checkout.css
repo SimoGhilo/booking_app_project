@@ -1,0 +1,106 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bd{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-self: flex-start;
+    margin-left: 6.5rem;
+}
+
+h5{
+    font-size: 1.5rem;
+}
+
+.checkout-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: hsl(345, 72%, 70%);
+    width: 88%;
+
+    
+
+    
+}
+
+.checkout-container .booking-details {
+    width: 20%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    
+    
+}
+
+.hotel-details{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 20%;
+    margin-left: 0.5rem;
+    
+}
+
+.hotel-details p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.hotel-details .name{
+    margin-top: 0.03rem;
+}
+
+.hotel-details .location{
+    margin-top: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.hotel-details .country{
+    margin-left: 6rem;
+}
+
+
+.hotel-details img {
+    width: 22rem;
+    height: 16rem;
+    margin-top: 2rem;
+}
+
+.hotel-details button{
+    margin-top: 2.5rem;
+    height: 4rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color:wheat;
+    font-weight: bold;
+    font-size: large;
+}
+
+.hotel-details button:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    color: white;
+    
+}
+
+.hotel-details .complete:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    color: white;
+    
+}
+
+.hotel-details .complete:active{
+    text-shadow: 1px 1px 1px black
+}
+
+.hotel-details p {
+    font-weight: bold;
+}
