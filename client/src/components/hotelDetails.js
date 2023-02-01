@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import '../styles/hotelDetails.css';
 import Checkout from './checkout';
+import { toggleCheckout } from '../slice/loginSlice';
 
 let linkStyle = { textDecoration: "none", color: "black" };
 
@@ -11,26 +12,30 @@ const HotelDetails = (props) => {
 
     let startDate = props.startDate;
     let endDate = props.endDate;
+    console.log('checkin', startDate, 'checkout', endDate);
 
     // fetching redux status
 
     let loginStatus = useSelector(state => state.loginStatus.isLoggedIn)
+    let isCheckedOut = useSelector(state => state.loginStatus.isCheckedOut);
+    let dispatch = useDispatch();
+
 
     let [rooms, setRooms] = useState([]);
 
     let [length, setLength] = useState(0);
+    console.log('local state', length);
 
-    let [isCheckedOut, setIsCheckedOut] = useState(false);
 
-    function toggleCheckout() {
-        setIsCheckedOut(true)
+    function switchCheckout() {
+        dispatch(toggleCheckout(true));
     }
 
     let { hotel_name } = useParams()
 
     let stringNight = props.lengthStay > 1 ? 'nights' : 'night';
-    console.log('Props', props.lengthStay)
-    console.log('local state', length)
+    //console.log('Props', props.lengthStay)
+    // console.log('local state', length)
 
     /// extra charge for weekends , will do later ... console.log(new Date(props.startDate).getDay(), new Date(props.endDate).getDay())
 
@@ -43,7 +48,7 @@ const HotelDetails = (props) => {
         });
         setLength(props.lengthStay);
 
-    }, [hotel_name, isCheckedOut, setIsCheckedOut, props.lengthStay, length])
+    }, [hotel_name, isCheckedOut, toggleCheckout, props.lengthStay, length, startDate, endDate])
 
 
 
@@ -79,7 +84,7 @@ const HotelDetails = (props) => {
                                                         <td><p>{rooms[key].room_name}</p></td>
                                                         <td><p>{rooms[key].room_capacity}</p></td>
                                                         {props.lengthStay > 0 && <td><p> £ {(rooms[key].room_rate) * props.lengthStay}</p></td>}
-                                                        {loginStatus === true && <><td className='book'><Link to={`/${rooms[key].hotel_id}/${rooms[key].room_id}/checkout`} style={linkStyle} onClick={toggleCheckout}><p>Book</p></Link></td></>}
+                                                        {loginStatus === true && <><td className='book'><Link to={`/${rooms[key].hotel_id}/${rooms[key].room_id}/checkout`} style={linkStyle} onClick={switchCheckout}><p>Book</p></Link></td></>}
                                                     </>)}
                                             </tr>
                                         </>
@@ -89,10 +94,6 @@ const HotelDetails = (props) => {
                         </>
                     ))}
                 </div>)};
-            <Routes>
-                <Route path={'/:hotel_id/:room_id/checkout'} /* element={<Checkout lengthStay={length} hotel_name={hotel_name} startDate={startDate} endDate={endDate} />}*/ />
-            </Routes>
-            {isCheckedOut && <Checkout lengthStay={length} hotel_name={hotel_name} startDate={startDate} endDate={endDate} />}
         </>
     );
 };

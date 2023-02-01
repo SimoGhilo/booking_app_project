@@ -29,7 +29,8 @@ const getRoomsByHotelName = (req, res) => {
 const getRoomByRoomId = (req, res) => {
     const hotel_id = req.params.hotel_id
     const room_id = req.params.room_id;
-    const query = `select * from rooms  where room_id=${room_id} and hotel_id=${hotel_id}`;
+    const query = `select * from rooms inner join hotels on rooms.hotel_id = hotels.hotel_id inner join locations on hotels.location_id=locations.location_id  where rooms.room_id=${room_id} and hotels.hotel_id=${hotel_id}`;
+    console.log('query here', query);
     try {
         pool.query(query, (err, result) => {
             if (err) { console.error(err); }

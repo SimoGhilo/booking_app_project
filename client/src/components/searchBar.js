@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import HotelDetails from './hotelDetails'
 import Checkout from './checkout';
 import '../styles/searchBar.css';
@@ -10,7 +10,11 @@ let linkStyle = { textDecoration: "none", color: "black" };
 
 const SearchBar = (props) => {
 
-    const navigate = useNavigate()
+    // Redux state 
+
+    let loginStatus = useSelector(state => state.loginStatus.isLoggedIn);
+    let user = useSelector(state => state.loginStatus.user);
+    let isCheckedOut = useSelector(state => state.loginStatus.isCheckedOut);
 
     const todaysDate = new Date();
     let tomorrow = new Date(todaysDate);
@@ -24,13 +28,6 @@ const SearchBar = (props) => {
     const [lengthStay, setLengthStay] = useState(0); /// set stay length in days
 
     const [properties, setProperties] = useState([]);
-
-    // debug
-    //console.log('check in', startDate);
-    //console.log('check out', endDate);
-    //console.log('todays date', todaysDate);
-    //console.log('guests', guests);
-    //console.log('length stay', lengthStay);
 
     function handleCheckInDate(e) {
         setStartDate(e)
@@ -84,29 +81,35 @@ const SearchBar = (props) => {
                     </div>
                 </div>
             </div>
-            {properties.length >= 1 && (
+            {!isCheckedOut &&
                 <>
-                    <div className='result-title'><h5>{location}: {properties.length} properties found</h5></div>
-                    <div className='hotel-results'>
-                        {properties.map(prop => (
-                            <>
-                                <div className="property">
-                                    <img className="property-pic" src={prop.hotel_img} />
-                                    <section className="description-property">
-                                        <figcaption><strong>{prop.hotel_name}</strong></figcaption>
-                                        <p className='place'>{prop.location_name}</p>
-                                        <p>{prop.hotel_description}</p>
-                                        <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}`} target="_blank" >View Hotel</Link></button>
-                                    </section>
-                                </div>
-                            </>))}
-                    </div>
-                </>)}
+                    {properties.length >= 1 && (
+                        <>
+                            <div className='result-title'><h5>{location}: {properties.length} properties found</h5></div>
+                            <div className='hotel-results'>
+                                {properties.map(prop => (
+                                    <>
+                                        <div className="property">
+                                            <img className="property-pic" src={prop.hotel_img} />
+                                            <section className="description-property">
+                                                <figcaption><strong>{prop.hotel_name}</strong></figcaption>
+                                                <p className='place'>{prop.location_name}</p>
+                                                <p>{prop.hotel_description}</p>
+                                                <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}`} >View Hotel</Link></button>
+                                            </section>
+                                        </div>
+                                    </>))}
+                            </div>
+                        </>)}
+                </>
+            }
             <Routes>
                 <Route path='/:hotel_name' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} />}></Route>
-                <Route path={'/:hotel_id/:room_id/checkout'} element={<Checkout lengthStay={lengthStay} startDate={startDate} endDate={endDate} />} />
             </Routes>
-            <HotelDetails />
+            {isCheckedOut && <Routes>
+                <Route path='/:hotel_id/:room_id/checkout' element={<Checkout lengthStay={lengthStay} startDate={startDate} endDate={endDate} />}></Route>
+            </Routes>
+            }
         </>
     );
 };
