@@ -19,8 +19,8 @@ text-align: center;
 .city img{
     width: 25rem;
     height: 15rem;
-    box-shadow: 1px 1px gray;
-    border-radius: 5%;
+    box-shadow: 2px 2px 2px 2px gray;
+    border-radius: 1%;
 }
 
 .city figcaption{
@@ -63,7 +63,7 @@ text-align: center;
 .country img {
     width: 30rem;
     height: 20rem;
-    box-shadow: 1px 1px black;
+    box-shadow: 2px 2px 2px 2px gray;
 }
 
 h4{

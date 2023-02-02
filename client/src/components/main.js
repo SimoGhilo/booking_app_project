@@ -4,6 +4,7 @@ import '../styles/main.css';
 
 import Carousel from "react-elastic-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Country from './country';
 
 
 const Main = () => {
@@ -22,39 +23,40 @@ const Main = () => {
     })
 
     return (
-        <div>
-            <h4 class="cities">Popular destinations</h4>
-            <div className='cities'>
-                <Carousel itemsToShow={3}>
+        <>
+            <div>
+                <h4 class="cities">Popular destinations</h4>
+                <div className='cities'>
+                    <Carousel itemsToShow={3}>
+                        {
+                            cities.map((city) => (
+                                <div className='city'>
+                                    <img src={city.img} />
+                                    <figcaption><Link style={{ textDecoration: "none", color: "black" }} to={`/${city.location_name}`}>{city.location_name}</Link></figcaption>
+                                </div>
+                            ))
+                        }
+                    </Carousel>
+                </div>
+                <h4 class="cities">Destinations by country</h4>
+                <div className='countries'>
                     {
-                        cities.map((city) => (
-                            <div className='city'>
-                                <img src={city.img} />
-                                <figcaption><Link style={{ textDecoration: "none", color: "black" }} to={`/${city.location_name}`}>{city.location_name}</Link></figcaption>
+                        cities.slice(4, 8).map((city) => (
+                            <div className='country'>
+                                <Link to={`/${city.country}`}><img src={city.img} /></Link>
+                                <span className='text'>{city.country}</span>
                             </div>
                         ))
                     }
-                </Carousel>
+                </div>
             </div>
-            <h4 class="cities">Destinations by country</h4>
-            <div className='countries'>
-                {
-                    cities.slice(4, 8).map((city) => (
-                        <div className='country'>
-                            <Link to={`/${city.country}`}><img src={city.img} /></Link>
-                            <span className='text'>{city.country}</span>
-
-                            <div className='flag' style={{ backgroundImage: `url('${city.country_flag}')` }}></div>
-                            {/*flag not showing up*/}
-                            <Routes>
-                                <Route path={`/${city.country}`}></Route>
-                            </Routes>
-                            {/*image carousel */}
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
+            {cities.slice(4, 8).map((city) => (
+                <Routes>
+                    <Route path={`/${city.country}`} element={<Country name={city.country} img1={city.img_country_1} img2={city.img_country_2} img3={city.img_country_3} description1={city.country_description_1} description2={city.country_description_2} description3={city.country_description_3} />}></Route>
+                </Routes>
+            ))
+            }
+        </>
     );
 };
 

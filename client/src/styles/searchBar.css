@@ -7,7 +7,8 @@
     background-image: url('https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1033&q=80');
     background-position: center;
     background-repeat: no-repeat;
-    
+    box-shadow: 2px 2px 2px 2px gray;
+    background-color: hsl(345, 72%, 70%)
 
 
 }

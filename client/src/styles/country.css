@@ -1,0 +1,44 @@
+
+.wrapper {
+    width: 80%;
+    margin-left: 8.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.wrapper h2 {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    text-shadow: 2px 2px 2px gray
+}
+
+.img-container{
+    width: 20rem;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px gray;
+    
+}
+
+.img-container figcaption{
+    margin-top: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-left : 0.2rem;
+    margin-right : 0.2rem;
+    text-align: center;
+    text-shadow: 1px 1px 1px gray;
+    font-size: 1.1rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.12rem;
+}
+
+
+

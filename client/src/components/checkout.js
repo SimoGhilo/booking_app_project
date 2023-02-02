@@ -49,16 +49,27 @@ const Checkout = (props) => {
      console.log(new Date(payloadEndDate)) */
     let check_in_date = new Date(props.startDate)
     let check_out_date = new Date(props.endDate)
-    check_in_date = check_in_date.getFullYear() + '-' + (check_in_date.getMonth() + 1) + '-' + check_in_date.getDate();
-    check_out_date = check_out_date.getFullYear() + '-' + (check_out_date.getMonth() + 1) + '-' + check_out_date.getDate();
-    console.log('c/i', typeof check_in_date)
-    console.log('c/o', typeof check_out_date)
+    //check_in_date = check_in_date.getFullYear() + '-' + (check_in_date.getMonth() + 1) + '-' + check_in_date.getDate();
+    //check_out_date = check_out_date.getFullYear() + '-' + (check_out_date.getMonth() + 1) + '-' + check_out_date.getDate();
+    //console.log('c/i', typeof check_in_date)
+    //console.log('c/o', typeof check_out_date)
+
+    /* Date.prototype.getDateWithoutTime = function () {
+         return new Date(this.toDateString());
+     } */
+
+    //console.log(Date.getDateWithoutTime(props.startDate));
+    //console.log('in checkout', props.startDate)
+
+
+    var cI = new Date(check_in_date.getFullYear(), check_in_date.getMonth(), check_in_date.getDate());
+    var cO = new Date(check_out_date.getFullYear(), check_out_date.getMonth(), check_out_date.getDate());
 
     async function book() {
 
         const payload = {
-            check_in_date: new Date(props.startDate.slice(0, 10)),
-            check_out_date: new Date(props.endDate.slice(0, 10)),
+            check_in_date: cI,
+            check_out_date: cO,
             user_id: user.user_id
         }
 
