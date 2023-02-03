@@ -70,10 +70,12 @@ const roomsRouter = require('./routes/rooms/rooms');
 app.use('/rooms', roomsRouter);
 
 const usersRouter = require('./routes/users/users');
-const pool = require('./database');
 app.use('/users', usersRouter);
 
+const bookingsRouter = require('./routes/bookings/bookings');
+app.use('/bookings', bookingsRouter);
 
+const pool = require('./database');
 /// Functionalities Backend
 
 // Register and Log in
@@ -150,10 +152,10 @@ app.post(`/:hotel_id/:room_id/checkout`, async (req, res) => {
 
     let { hotel_id, room_id } = req.params;
 
-    let { check_in_date, check_out_date, user_id } = req.body;
+    let { check_in_date, check_out_date, user_id, price, length, guests, room_name } = req.body;
 
     try {
-        let query = `insert into bookings(user_id, hotel_id, room_id, check_in_date, check_out_date) values(${user_id},${hotel_id},${room_id},${check_in_date},${check_out_date})`;
+        let query = `insert into bookings(user_id, hotel_id, room_id, check_in_date, check_out_date, price, length, guests, room_name) values(${user_id},${hotel_id},${room_id},'${check_in_date}','${check_out_date}', ${price}, ${length}, ${guests},'${room_name}')`;
         console.log(query);
         pool.query(query, (err, result) => {
 

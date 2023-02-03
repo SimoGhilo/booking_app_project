@@ -1,0 +1,56 @@
+.loggedIn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-info {
+    font-size: 1.2rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.avatar-info p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.loggedIn h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2.5rem;
+}
+
+.loggedIn h2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2.5rem;
+}
+
+.loggedIn .trips {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.loggedIn .trips h5 {
+    font-size: 2.5rem;
+}
+
+.loggedIn .trips .booking{
+display: inline-flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: space-between;
+}
+
+.loggedIn .trips .booking img{
+    height: 20rem;
+}
+
+.loggedIn .trips .booking .property-info {
+    margin-right: 5rem;
+
+}
+
+.loggedIn .trips .booking .info-container {
+    text-align: center;
+    margin-top: -11.1rem;
+}

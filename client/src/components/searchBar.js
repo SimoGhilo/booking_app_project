@@ -26,8 +26,19 @@ const SearchBar = (props) => {
     const [guests, setGuests] = useState(1);
 
     // debug
-    //console.log('start date', startDate)
-    //console.log('end date', endDate);
+    //console.log('start date', typeof startDate)
+    //console.log('end date', typeof endDate);
+    let check_in_date;
+    let check_out_date;
+    //// Issues into modifying the date objects to be pushed to the db
+    if (typeof startDate == 'object' || typeof endDate == 'object') {
+        check_in_date = startDate.toISOString().slice(0, 10);
+        check_out_date = endDate.toISOString().slice(0, 10);
+    } else {
+        check_in_date = startDate.toString().slice(0, 10);
+        check_out_date = endDate.toString().slice(0, 10);
+    }
+
 
     const [lengthStay, setLengthStay] = useState(0); /// set stay length in days
 
@@ -122,7 +133,7 @@ const SearchBar = (props) => {
                 <Route path='/:hotel_name' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} />}></Route>
             </Routes>
             {isCheckedOut && <Routes>
-                <Route path='/:hotel_id/:room_id/checkout' element={<Checkout lengthStay={lengthStay} startDate={startDate} endDate={endDate} />}></Route>
+                <Route path='/:hotel_id/:room_id/checkout' element={<Checkout lengthStay={lengthStay} startDate={check_in_date /*props.startDate.toString() */} endDate={check_out_date /*props.etartDate.toString() */} guests={guests} />}></Route>
             </Routes>
             }
         </>

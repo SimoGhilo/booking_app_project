@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import Login from './login';
 import Register from './register';
 import Profile from './profile';
 import '../styles/navbar.css';
+
+import { toggleCheckout } from '../slice/loginSlice';
 
 
 
@@ -20,11 +22,23 @@ const Navbar = (props) => {
 
     let user = useSelector(state => state.loginStatus.user)
     let loginStatus = useSelector(state => state.loginStatus.isLoggedIn)
+    let isCheckedOut = useSelector(state => state.loginStatus.isCheckedOut);
+    let dispatch = useDispatch();
+    let navigate = useNavigate();
+
+    function switchCheckout() {
+        dispatch(toggleCheckout(false));
+        navigate('/')
+    }
+
+    useEffect(() => {
+
+    }, [isCheckedOut, switchCheckout]);
 
     return (
         <>
             <nav className="navbar">
-                <div className="logo"><Link to={'/'}><img src='https://cdn-icons-png.flaticon.com/512/201/201623.png' onClick={() => props.setIsActive(true)} /></Link></div>
+                <div className="logo"><Link to={'/'} onClick={switchCheckout}><img src='https://cdn-icons-png.flaticon.com/512/201/201623.png' onClick={() => props.setIsActive(true)} /></Link></div>
                 <h1 className="title">Travel.com</h1>
                 {
                     !loginStatus && (<ul className='menu'>
@@ -35,7 +49,7 @@ const Navbar = (props) => {
                 {
                     loginStatus && (
                         <div className="avatar">
-                            <h6 className='avatarName'><Link to={"/Profile"} className="linkProfile">Hi {user.user_name} !</Link></h6>
+                            <h6 className='avatarName'><Link to={"/Profile"} className="linkProfile" onClick={() => props.setIsActive(false)} >Hi {user.user_name} !</Link></h6>
                         </div>
                     )
                 }

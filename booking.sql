@@ -30,7 +30,11 @@ CREATE TABLE public.bookings (
     hotel_id integer,
     room_id integer,
     check_in_date date NOT NULL,
-    check_out_date date NOT NULL
+    check_out_date date NOT NULL,
+    price integer,
+    length integer,
+    guests integer,
+    room_name character varying
 );
 
 
@@ -254,7 +258,9 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: bookings; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.bookings (booking_id, user_id, hotel_id, room_id, check_in_date, check_out_date) FROM stdin;
+COPY public.bookings (booking_id, user_id, hotel_id, room_id, check_in_date, check_out_date, price, length, guests, room_name) FROM stdin;
+9	11	1	12	2023-02-03	2023-02-04	180	1	1	King Room
+10	11	6	2	2023-02-03	2023-02-04	70	1	1	Doble habitaction
 \.
 
 
@@ -326,7 +332,7 @@ COPY public.users (user_id, user_name, email, user_password) FROM stdin;
 -- Name: bookings_booking_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bookings_booking_id_seq', 1, false);
+SELECT pg_catalog.setval('public.bookings_booking_id_seq', 10, true);
 
 
 --
