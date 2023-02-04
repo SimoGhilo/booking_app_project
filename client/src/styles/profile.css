@@ -31,26 +31,97 @@
 }
 
 .loggedIn .trips h5 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 .loggedIn .trips .booking{
-display: inline-flex;
+display:flex;
 flex-direction: row;
-justify-content: space-between;
-align-items: space-between;
+justify-content: center;
+align-items: center;
+box-shadow: 2px 2px 2px 2px gray;
+margin: 1rem;
 }
 
 .loggedIn .trips .booking img{
     height: 20rem;
+    width: 30rem;
+    box-shadow: 1px 1px 1px 1px gray;
+    
 }
 
-.loggedIn .trips .booking .property-info {
-    margin-right: 5rem;
 
+.loggedIn .trips .booking .property-info {
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+    margin-left: 1rem;
+    font-weight: bold;
+
+}
+
+.loggedIn .trips .booking .property-info .button-container{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    height: 2.5rem;
+    
+
+}
+
+.loggedIn .trips .booking .property-info .button-container .cancel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    background-color:wheat;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.loggedIn .trips .booking .property-info .button-container .modify{
+    background-color:wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+  
+
+
+
+.loggedIn .trips .booking .property-info .button-container .modify:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    
+}
+
+.loggedIn .trips .booking .property-info .button-container .cancel:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    
+}
+
+
+.loggedIn .trips .booking .property-info .button-container p:hover {
+    color: white;
 }
 
 .loggedIn .trips .booking .info-container {
     text-align: center;
-    margin-top: -11.1rem;
+    line-height: 1.4rem;
+    margin-right: 0.8rem;
+    font-weight: bold;
+    
+    
 }
+
+.loggedIn .trips .booking .info-container h6 {
+    font-size: 0.8rem;
+}
+

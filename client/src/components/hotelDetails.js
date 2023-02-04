@@ -12,7 +12,7 @@ const HotelDetails = (props) => {
 
     let startDate = props.startDate;
     let endDate = props.endDate;
-    console.log('checkin', startDate, 'checkout', endDate);
+    console.log('checkin', startDate, 'checkout', endDate, 'length stay', props.lengthStay);
 
     // fetching redux status
 

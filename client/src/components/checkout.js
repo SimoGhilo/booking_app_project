@@ -97,12 +97,11 @@ const Checkout = (props) => {
                 {loginStatus === true && <>
                     <section className='booking-details'>
                         <div className='check-in-out'>
-                            <h5>Check in</h5>
+                            <h6>Check in</h6>
                             <p>{props.startDate.toString().slice(0, 10)}</p>
-                            <h5>Check out</h5>
-                            <p>{props.endDate.slice(0, 10)}</p>
-                            <h5>Total length of stay:</h5>
-                            <p><strong>{props.lengthStay} {stringNight}</strong></p>
+                            <h6>Check out</h6>
+                            <p>{props.endDate.toString().slice(0, 10)}</p>
+                            <h6>Total length of stay: {props.lengthStay} {stringNight}</h6>
                         </div>
                         <div className='room-selection'>
                             <h5>Your room selection:</h5>

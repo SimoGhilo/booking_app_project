@@ -47,11 +47,15 @@ const Profile = () => {
                                 <p>{booking.location_name}</p>
                                 <p>{booking.country}</p>
                                 <img src={booking.hotel_img} />
+                                <div className="button-container">
+                                    <button className='cancel'><p>Cancel booking</p></button>
+                                    <button className='modify'><p>Modify booking</p></button>
+                                </div>
                             </div>
                             <div className='info-container'>
-                                <h5>Check in</h5>
+                                <h6>Check in</h6>
                                 <p>{booking.check_in_date.slice(0, 10)}</p>
-                                <h5>Check out</h5>
+                                <h6>Check out</h6>
                                 <p>{booking.check_out_date.slice(0, 10)}</p>
                                 <h6>Total length stay</h6>
                                 <p>{booking.length}</p>

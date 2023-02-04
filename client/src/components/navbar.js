@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { Route, Routes, Link, useNavigate, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Login from './login';
 import Register from './register';
@@ -55,11 +55,19 @@ const Navbar = (props) => {
                 }
             </nav>
             {
+                !loginStatus &&
                 <Routes>
-                    <Route path={"/Profile"} element={<Profile />}></Route>
                     <Route path='/login' element={<Login setIsActive={props.setIsActive} />}></Route>
                     <Route path='/register' element={<Register isActive={props.isActive} setIsActive={props.setIsActive} />}></Route>
                 </Routes>
+            }
+            {
+                loginStatus && (
+                    <Routes>
+                        <Route path={"/Profile"} element={<Profile />}></Route>
+                    </Routes>
+
+                )
             }
 
         </>

@@ -52,7 +52,7 @@ const Main = () => {
             </div>
             {cities.slice(4, 8).map((city) => (
                 <Routes>
-                    <Route path={`/${city.country}`} element={<Country name={city.country} img1={city.img_country_1} img2={city.img_country_2} img3={city.img_country_3} description1={city.country_description_1} description2={city.country_description_2} description3={city.country_description_3} />}></Route>
+                    <Route path={`/${city.country}`} element={<Country name={city.country} img1={city.img_country_1} img2={city.img_country_2} img3={city.img_country_3} img4={city.img_country_4} description1={city.country_description_1} description2={city.country_description_2} description3={city.country_description_3} description4={city.country_description_4} />}></Route>
                 </Routes>
             ))
             }
