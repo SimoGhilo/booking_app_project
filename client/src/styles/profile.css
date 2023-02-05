@@ -9,6 +9,28 @@
 .avatar-info {
     font-size: 1.2rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-info button {
+    margin-top: 2rem;
+    background-color:hsl(244, 100%, 65%);
+    
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2%;
+}
+
+.avatar-info button:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    color: wheat;
 }
 
 
@@ -28,6 +50,7 @@
 
 .loggedIn .trips {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
 }
 
 .loggedIn .trips h5 {
@@ -41,6 +64,7 @@ justify-content: center;
 align-items: center;
 box-shadow: 2px 2px 2px 2px gray;
 margin: 1rem;
+background-color: hsl(345, 72%, 70%)
 }
 
 .loggedIn .trips .booking img{

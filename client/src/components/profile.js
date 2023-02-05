@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Link, Route, Routes } from 'react-router-dom';
 import Login from './login';
 import Register from './register';
 import '../styles/profile.css';
+import { setLoginStatus } from '../slice/loginSlice';
 
 
-const Profile = () => {
+const Profile = (props) => {
 
     // fetching redux status
     let user = useSelector(state => state.loginStatus.user)
     let loginStatus = useSelector(state => state.loginStatus.isLoggedIn)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+
+    let setIsActive = props.setIsActive;
 
     let [bookings, setBookings] = useState([]);
 
@@ -25,7 +32,47 @@ const Profile = () => {
         }).catch((error) => {
             console.error(error);
         });
-    }, [])
+
+    }, [cancel])
+
+    async function logout() {
+        let url = 'http://localhost:5000/logout';
+        let result = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'include',
+        })
+
+        if (result.status === 200) {
+            const data = await result.json();
+            console.log(data);
+            dispatch(setLoginStatus(data.loggedIn))
+            setIsActive(true)
+            navigate('/')
+
+        } else {
+            console.log('error ', result.status)
+        }
+
+    }
+
+    async function cancel(booking_id) {
+        let url = `http://localhost:5000/cancel/${booking_id}`;
+        await fetch(url, {
+            method: 'DELETE',
+        }).then((res) => {
+            if (res.status) {
+                alert('Booking cancelled successfully');
+            } else {
+                alert('Error removing item')
+            }
+        });
+    }
 
 
 
@@ -36,6 +83,7 @@ const Profile = () => {
                 <div className='avatar-info'>
                     <p className='avatar'>Username : {user.user_name}</p>
                     <p className='avatar'>Email : {user.email}</p>
+                    <button onClick={logout}>Logout</button>
                 </div>
                 <h2>Bookings & Trips</h2>
                 <div className='trips'>
@@ -48,8 +96,8 @@ const Profile = () => {
                                 <p>{booking.country}</p>
                                 <img src={booking.hotel_img} />
                                 <div className="button-container">
-                                    <button className='cancel'><p>Cancel booking</p></button>
-                                    <button className='modify'><p>Modify booking</p></button>
+                                    <button className='cancel' onClick={() => cancel(booking.booking_id)}><p>Cancel booking</p></button>
+                                    <button className='modify' /*onClick={update}*/><p>Modify booking</p></button>
                                 </div>
                             </div>
                             <div className='info-container'>

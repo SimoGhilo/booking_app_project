@@ -41,10 +41,14 @@ const SearchBar = (props) => {
     console.log('ending', ending);
 
     let begin = initial.split('-');
-    let starting_date = new Date(begin[2], begin[0] - 1, begin[1]);
+    begin = begin.filter(n => n)
+    console.log('begin', begin);
+    let starting_date = typeof begin == 'string' ? new Date(begin[2], begin[0] - 1, begin[1]) : begin
 
     let stop = ending.split('-');
-    let ending_date = new Date(stop[2], stop[0] - 1, stop[1]);
+    stop = stop.filter(n => n)
+    console.log('stop', stop);
+    let ending_date = typeof stop == 'string' ? new Date(stop[2], stop[0] - 1, stop[1]) : stop
 
     console.log('debug start date type here', starting_date)
     console.log('debug end date type here', ending_date)
@@ -93,10 +97,13 @@ const SearchBar = (props) => {
             setLengthStay(1);
         }
 
-
+        if (Array.isArray(starting_date)) { starting_date = new Date(starting_date[1], startDate[2] - 1, starting_date[3]); }
+        if (Array.isArray(ending_date)) { ending_date = new Date(ending_date[1], ending_date[2] - 1, ending_date[3]); }
         setLengthStay(Math.floor(ending_date.getTime() - starting_date.getTime()) / 86400000) /// Convert into days
 
-    }, [location, startDate, endDate, setEndDate, setStartDate, guests, setGuests, lengthStay, setLengthStay, isSearching, setIsSearching])
+    }, [location, startDate, endDate, setEndDate, setStartDate, guests, setGuests, lengthStay, setLengthStay, isSearching, setIsSearching, ending_date, starting_date])
+
+
 
 
     return (

@@ -64,7 +64,7 @@ const Navbar = (props) => {
             {
                 loginStatus && (
                     <Routes>
-                        <Route path={"/Profile"} element={<Profile />}></Route>
+                        <Route path={"/Profile"} element={<Profile isActive={props.isActive} setIsActive={props.setIsActive} />}></Route>
                     </Routes>
 
                 )

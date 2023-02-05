@@ -31,8 +31,8 @@ const Main = () => {
                         {
                             cities.map((city) => (
                                 <div className='city'>
-                                    <img src={city.img} />
-                                    <figcaption><Link style={{ textDecoration: "none", color: "black" }} to={`/${city.location_name}`}>{city.location_name}</Link></figcaption>
+                                    <img src={city.img} className='city-pic' />
+                                    <figcaption>{city.location_name}</figcaption>
                                 </div>
                             ))
                         }

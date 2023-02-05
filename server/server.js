@@ -145,6 +145,16 @@ app.get('/isLoggedIn', (req, res) => {
 });
 
 
+//logout
+
+app.post('/logout', (req, res, next) => {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/isLoggedIn');
+    });
+})
+
+
 
 /// Book a room
 
@@ -167,6 +177,19 @@ app.post(`/:hotel_id/:room_id/checkout`, async (req, res) => {
         console.log(error);
     }
 
+})
+
+
+//Cancel a booking
+
+app.delete(`/cancel/:booking_id`, async (req, res) => {
+
+    let booking_id = req.params.booking_id;
+
+    pool.query(`delete from bookings where booking_id=${booking_id}`, (err, res) => {
+        if (err) { console.log(err); }
+
+    })
 })
 
 
