@@ -32,40 +32,9 @@ const SearchBar = (props) => {
     let [endDate, setEndDate] = useState(tomorrow); // set check out date, default tomorrow
     const [guests, setGuests] = useState(1);
 
-    // debug
-    //startDate = startDate.split(/\//);
-    //startDate = [startDate[2], startDate[1], startDate[0]].join(',');
+
     console.log('startDate: ', startDate);
     console.log('end date', endDate);
-
-    // Helper functions for date parsing
-
-    /* var initial = typeof startDate == 'string' ? startDate.split(/\//) : startDate;
-     initial = [initial[1], initial[0], initial[2]].join('-');
-     var ending = typeof endDate == 'string' ? endDate.split(/\//) : endDate;
-     ending = [ending[1], ending[0], ending[2]].join('-');
- 
-     console.log('initial', initial);
-     console.log('ending', ending);
- 
-     let begin = initial.split('-');
-     begin = begin.filter(n => n)
-     console.log('begin', begin);
-     let starting_date = typeof begin == 'string' ? new Date(begin[2], begin[0] - 1, begin[1]) : begin
- 
-     let stop = ending.split('-');
-     stop = stop.filter(n => n)
-     console.log('stop', stop);
-     let ending_date = typeof stop == 'string' ? new Date(stop[2], stop[0] - 1, stop[1]) : stop
- 
-     console.log('debug start date type here', starting_date)
-     console.log('debug end date type here', ending_date) */
-
-
-    //// Errors in the logic to generate the length of the stay //// check with harry
-
-
-
 
     const [lengthStay, setLengthStay] = useState(Math.floor((endDate.getTime() - startDate.getTime()) / 86400000)); /// set stay length in days
 
@@ -87,7 +56,7 @@ const SearchBar = (props) => {
         setIsSearching(!isSearching)
     }
 
-
+    console.log('is searching', isSearching)
 
 
     useEffect(() => {
@@ -108,12 +77,9 @@ const SearchBar = (props) => {
             setLengthStay(1);
         }
 
-        // if (Array.isArray(starting_date)) { starting_date = new Date(starting_date[1], startDate[2] - 1, starting_date[3]); }
-        // if (Array.isArray(ending_date)) { ending_date = new Date(ending_date[1], ending_date[2] - 1, ending_date[3]); }
-        // setLengthStay(Math.floor(ending_date.getTime() - starting_date.getTime()) / 86400000) /// Convert into days
         setLengthStay(Math.floor((endDate.getTime() - startDate.getTime()) / 86400000));
 
-    }, [location, startDate, endDate, setEndDate, setStartDate, guests, setGuests, lengthStay, setLengthStay, isSearching, setIsSearching, /*ending_date, starting_date*/])
+    }, [location, startDate, endDate, setEndDate, setStartDate, guests, setGuests, lengthStay, setLengthStay, isSearching, setIsSearching,])
 
 
 
@@ -173,7 +139,7 @@ const SearchBar = (props) => {
                 <Route path='/:hotel_name' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} />}></Route>
             </Routes>
             {isCheckedOut && <Routes>
-                <Route path='/:hotel_id/:room_id/checkout' element={<Checkout lengthStay={lengthStay} startDate={/*check_in_date */startDate} endDate={/*check_out_date */ endDate} guests={guests} />}></Route>
+                <Route path='/:hotel_id/:room_id/checkout' element={<Checkout lengthStay={lengthStay} startDate={/*check_in_date */startDate} endDate={/*check_out_date */ endDate} guests={guests} setStartDate={setStartDate} setEndDate={setEndDate} todaysDate={todaysDate} tomorrow={tomorrow} isSearching={isSearching} setIsSearching={setIsSearching} />}></Route>
             </Routes>
             }
         </>

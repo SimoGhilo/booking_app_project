@@ -1,0 +1,13 @@
+.box{
+    margin-left:0.5rem;
+    margin-right: 0.5rem;
+
+    
+}
+
+.box input{
+    height: 1.7rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black;
+    font-weight: bold;
+}

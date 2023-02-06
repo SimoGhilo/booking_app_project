@@ -40,3 +40,7 @@ h2{
     background-color:rgb(25, 22, 77);
     color: wheat;
 }
+
+.login img{
+    height: 10rem;
+}

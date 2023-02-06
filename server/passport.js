@@ -1,6 +1,7 @@
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const localStartegy = require('passport-local').Strategy;
+const FacebookStrategy = require('passport-facebook');
 const pool = require('./database');
 
 
@@ -58,6 +59,20 @@ function initialize(passport) {
             return done(null, result.rows[0]);
         })
     })
+
+    passport.use(new FacebookStrategy({
+        clientID: "1845698709138421",
+        clientSecret: "e395ca5b512589acb1ef6080d57dafee",
+        callbackURL: "http://localhost:5000/auth/facebook/callback"
+    },
+        function (accessToken, refreshToken, profile, cb) {
+            console.log(profile);  //// No email returned by Facebook Oauth
+            (err, user) => {
+
+                return cb(err, user);
+
+            }
+        }))
 
 
 }

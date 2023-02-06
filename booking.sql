@@ -261,8 +261,13 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.bookings (booking_id, user_id, hotel_id, room_id, check_in_date, check_out_date, price, length, guests, room_name) FROM stdin;
-9	11	1	12	2023-02-03	2023-02-04	180	1	1	King Room
-13	11	4	4	2023-02-04	2023-02-05	350	1	1	Stanza Doppia
+20	11	3	8	2023-02-06	2023-02-08	180	2	1	Single Room
+23	11	2	9	2023-02-06	2023-02-07	100	1	1	Double Room
+29	11	2	9	2023-02-09	2023-02-12	300	3	1	Double Room
+30	11	2	9	2023-02-10	2023-02-12	200	2	1	Double Room
+31	11	2	9	2023-02-10	2023-02-12	200	2	1	Double Room
+32	11	3	7	2023-02-20	2023-02-26	1056	6	1	Double Room
+33	11	3	7	2023-02-22	2023-02-25	528	3	1	Double Room
 \.
 
 
@@ -334,7 +339,7 @@ COPY public.users (user_id, user_name, email, user_password) FROM stdin;
 -- Name: bookings_booking_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bookings_booking_id_seq', 13, true);
+SELECT pg_catalog.setval('public.bookings_booking_id_seq', 33, true);
 
 
 --

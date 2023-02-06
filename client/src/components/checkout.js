@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { toggleCheckout } from '../slice/loginSlice';
 import '../styles/checkout.css';
+
 
 let linkStyle = { textDecoration: "none", color: "black" };
 
@@ -18,8 +19,11 @@ const Checkout = (props) => {
     let navigate = useNavigate();
 
     function switchCheckout() {
-        dispatch(toggleCheckout(false));
+        props.setIsSearching(true);
+        props.setStartDate(props.todaysDate);
+        props.setEndDate(props.tomorrow);
         navigate('/')
+        dispatch(toggleCheckout(false));
     }
 
     let stringNight = props.lengthStay > 1 ? 'nights' : 'night';
@@ -41,12 +45,6 @@ const Checkout = (props) => {
         })
     }, [isCheckedOut, toggleCheckout]);
 
-    // payload variables
-    /* console.log(
-         'Look here',
-         'ci', props.startDate.toLocaleDateString().slice(0, 10).split(/\//),
-         'co', props.endDate,
-     )*/
 
     let check_in_date = props.startDate.toLocaleDateString().split(/\//);
     check_in_date = [check_in_date[2], check_in_date[1], check_in_date[0]].join('-');
@@ -139,7 +137,7 @@ const Checkout = (props) => {
                             <img src={r.hotel_img} />
 
                         )}
-                        <button className='now'><Link style={linkStyle} onClick={switchCheckout}><p className='complete' onClick={book}>Complete Booking</p></Link></button>
+                        <button className='now'><Link style={linkStyle} to={"/"} onClick={switchCheckout}><p className='complete' onClick={book}>Complete Booking</p></Link></button>
                     </section>
                 </>}
 

@@ -62,6 +62,30 @@ const Login = (props) => {
             console.log('Invalid credentials or error: ' + result.status);
         }
     }
+
+
+    async function handleFacebookLogin() {
+        const url = 'http://localhost:5000/auth/facebook';
+        try {
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://localhost:5000',
+                },
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'include',
+
+            })
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
+
+
+    }
     return (
         <div className='login'>
             <h2>Welcome back !</h2>
@@ -72,6 +96,10 @@ const Login = (props) => {
                 <input type="password" placeholder='password' onChange={(e) => setPassword(e.target.value)} required />
             </div>
             <button type="submit" onClick={login}>Login</button>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg' onClick={handleFacebookLogin} />
+            <form action="http://localhost:5000/auth/facebook" method="GET" >
+                <input type="submit" value="Press to log in" />
+            </form>
         </div>
     );
 };
