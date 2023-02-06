@@ -42,14 +42,17 @@ const Checkout = (props) => {
     }, [isCheckedOut, toggleCheckout]);
 
     // payload variables
-    console.log(
-        'Look here',
-        'ci', props.startDate,
-        'co', props.endDate,
-    )
+    /* console.log(
+         'Look here',
+         'ci', props.startDate.toLocaleDateString().slice(0, 10).split(/\//),
+         'co', props.endDate,
+     )*/
 
-    let check_in_date = props.startDate.toString();
-    let check_out_date = props.endDate.toString();
+    let check_in_date = props.startDate.toLocaleDateString().split(/\//);
+    check_in_date = [check_in_date[2], check_in_date[1], check_in_date[0]].join('-');
+    let check_out_date = props.endDate.toLocaleDateString().split(/\//);
+    check_out_date = [check_out_date[2], check_out_date[1], check_out_date[0]].join('-');
+
     let price = room.map((r) => {
         return r.room_rate * props.lengthStay
     })
@@ -98,9 +101,9 @@ const Checkout = (props) => {
                     <section className='booking-details'>
                         <div className='check-in-out'>
                             <h6>Check in</h6>
-                            <p>{props.startDate.toString().slice(0, 10)}</p>
+                            <p>{props.startDate.toLocaleString().slice(0, 10)}</p>
                             <h6>Check out</h6>
-                            <p>{props.endDate.toString().slice(0, 10)}</p>
+                            <p>{props.endDate.toLocaleString().slice(0, 10)}</p>
                             <h6>Total length of stay: {props.lengthStay} {stringNight}</h6>
                         </div>
                         <div className='room-selection'>

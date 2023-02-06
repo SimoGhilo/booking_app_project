@@ -25,7 +25,7 @@ const Main = () => {
     return (
         <>
             <div>
-                <h4 class="cities">Popular destinations</h4>
+                <h4 class="cities">Available destinations</h4>
                 <div className='cities'>
                     <Carousel itemsToShow={3}>
                         {
@@ -38,7 +38,7 @@ const Main = () => {
                         }
                     </Carousel>
                 </div>
-                <h4 class="cities">Destinations by country</h4>
+                <h4 class="cities">Popular countries</h4>
                 <div className='countries'>
                     {
                         cities.slice(4, 8).map((city) => (

@@ -184,12 +184,23 @@ app.post(`/:hotel_id/:room_id/checkout`, async (req, res) => {
 
 app.delete(`/cancel/:booking_id`, async (req, res) => {
 
-    let booking_id = req.params.booking_id;
+    const booking_id = req.params.booking_id;
 
     pool.query(`delete from bookings where booking_id=${booking_id}`, (err, res) => {
         if (err) { console.log(err); }
 
     })
+})
+
+/// modify a booking
+
+app.put(`/update/:booking_id`, (req, res) => {
+
+    const booking_id = req.params.booking_id;
+
+    /// on hold, have to figure out how to handle availability
+
+    pool.query()
 })
 
 
