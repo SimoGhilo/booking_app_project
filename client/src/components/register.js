@@ -20,7 +20,7 @@ const Register = (props) => {
     useEffect(() => {
         if (registered) {
             navigate('/');
-            setIsActive(false);
+            setIsActive(true);
         }
     }, [registered]);
 

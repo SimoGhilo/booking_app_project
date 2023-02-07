@@ -25,15 +25,17 @@ const Profile = (props) => {
 
     useEffect(() => {
         let url = `http://localhost:5000/bookings/${user.user_id}`;
-        fetch(url).then((response) => {
-            response.json().then((data) => {
-                setBookings(data);
-            })
-        }).catch((error) => {
-            console.error(error);
-        });
+        if (loginStatus == true) {
+            fetch(url).then((response) => {
+                response.json().then((data) => {
+                    setBookings(data);
+                })
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
 
-    }, [cancel])
+    }, [cancel, loginStatus])
 
     async function logout() {
         let url = 'http://localhost:5000/logout';
@@ -116,7 +118,7 @@ const Profile = (props) => {
                     ))}
                 </div>
             </div>}
-            {!loginStatus &&
+            {loginStatus == false &&
                 <div className='notloggedIn'>
                     <h1>Account</h1>
                     <h6>You are currently not logged in, please log-in below</h6>

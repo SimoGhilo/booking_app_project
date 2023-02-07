@@ -53,7 +53,7 @@ function initialize(passport) {
     })
 
     passport.deserializeUser((user, done) => {
-        //console.log("deserialized user " + user.user_id);
+        console.log("deserialized user " + user.user_id);
         pool.query(`select * from users where user_id=${user.user_id}`, (err, result) => {
             if (err) throw err;
             return done(null, result.rows[0]);
@@ -63,15 +63,60 @@ function initialize(passport) {
     passport.use(new FacebookStrategy({
         clientID: "1845698709138421",
         clientSecret: "e395ca5b512589acb1ef6080d57dafee",
-        callbackURL: "http://localhost:5000/auth/facebook/callback"
+        callbackURL: "http://localhost:5000/auth/facebook/callback",
+        profileFields: ["id", "name", "email"]
     },
         function (accessToken, refreshToken, profile, cb) {
-            console.log(profile);  //// No email returned by Facebook Oauth
-            (err, user) => {
 
-                return cb(err, user);
+            const user_email = profile.emails[0].value;
 
-            }
+            pool.query(`select * from users where email='${user_email}'`, (err, result) => {
+                //console.log('in passport', result);
+                if (err) { throw err; console.log(err) }
+
+                // user in db
+
+                if (result.rows.length > 0) {
+
+                    user = result.rows[0];
+
+                    return cb(err, user);
+                } else {
+
+                    const user_name = profile.name.givenName;
+                    const user_email = profile.emails[0].value;
+
+                    const query = `insert into users(user_name,email,user_password) values('${user_name}','${user_email}','${'none'}')`;
+                    // Creates entry in the database
+
+                    pool.query(query, (err, result) => {
+
+                        if (err) { return cb(null, false); } else {
+
+                            //selects the new entry in the database
+
+                            pool.query(`select * from users where email='${user_email}'`, (err, result) => {
+
+                                if (err) { return cb(null, false); } else {
+
+                                    const user = result.rows[0]
+
+                                    // console.log(user)
+
+                                    return cb(null, user);
+                                }
+
+                            })
+
+                        }
+
+                    })
+                }
+
+            })
+
+
+
         }))
 
 

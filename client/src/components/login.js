@@ -98,7 +98,7 @@ const Login = (props) => {
             <button type="submit" onClick={login}>Login</button>
             <img src='https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg' onClick={handleFacebookLogin} />
             <form action="http://localhost:5000/auth/facebook" method="GET" >
-                <input type="submit" value="Press to log in" />
+                <input className='facebook' type="submit" value="Press to log in" />
             </form>
         </div>
     );

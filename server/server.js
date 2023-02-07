@@ -100,12 +100,11 @@ app.post('/register', async (req, res) => {
 
                 pool.query(`insert into users(user_name,email,user_password) values('${user_name}','${email}','${hashedPassword}')`, (err, result) => {
 
-                    if (err) throw err
+                    if (err) { throw err } else {
 
-                    res.redirect('/login')
-
+                        res.redirect('http://localhost:3000/login')
+                    }
                 })
-
             }
         })
 
@@ -157,13 +156,14 @@ app.post('/logout', (req, res, next) => {
 // Facebook Oauth
 
 app.get('/auth/facebook',
-    passport.authenticate('facebook'));
+    passport.authenticate('facebook', { scope: ["email"] }));
 
 app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    passport.authenticate('facebook', { failureRedirect: 'http://localhost:3000/' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/');
+        //console.log('callback facebook user', req.user);
+        res.redirect('http://localhost:3000/');
     });
 
 

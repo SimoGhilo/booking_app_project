@@ -42,5 +42,26 @@ h2{
 }
 
 .login img{
-    height: 10rem;
+    height: 8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.login .facebook{
+    background-color:hsl(244, 100%, 65%);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5%;
+
+}
+
+.login .facebook:hover{
+    cursor: pointer;
+    background-color:rgb(25, 22, 77);
+    color: wheat;
 }
