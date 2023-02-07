@@ -92,14 +92,6 @@ const SearchBar = (props) => {
                         <div className='field'>
                             <input type='text' className='input' placeholder='Where to ?' onChange={(e) => setLocation(e.target.value)} required />
                         </div>
-                        {/* <p>Check in</p>
-                        <div className='field'>
-                            <input type='date' className='input' placeholder={todaysDate} onChange={(e) => handleCheckInDate(e.target.value)} value={startDate.toLocaleString('en-GB').slice(0, 10)} min={new Date().toISOString().slice(0, 10)} required />
-                        </div>
-                        <p>Check out</p>
-                        <div className='field'>
-                            <input type='date' className='input' placeholder={tomorrow} onChange={(e) => handleCheckOutDate(e.target.value)} value={endDate.toLocaleString('en-GB').slice(0, 10)} min={new Date().toISOString().slice(0, 10)} required />
-            </div>*/ }
                         <p>Check in</p>
                         <DateSelectorStart handleCheckInDate={handleCheckInDate} startDate={startDate} todaysDate={todaysDate} />
                         <p>Check out</p>
@@ -123,9 +115,9 @@ const SearchBar = (props) => {
                                             <div className="property">
                                                 <img className="property-pic" src={prop.hotel_img} />
                                                 <section className="description-property">
-                                                    <figcaption><strong>{prop.hotel_name}</strong></figcaption>
+                                                    <figcaption><strong><p>{prop.hotel_name}</p></strong></figcaption>
                                                     <p className='place'>{prop.location_name}</p>
-                                                    <p>{prop.hotel_description}</p>
+                                                    <p className='description'>{prop.hotel_description}</p>
                                                     <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}`} onClick={toggleSearch} ><p>View Hotel</p></Link></button>
                                                 </section>
                                             </div>

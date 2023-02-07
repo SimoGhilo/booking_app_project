@@ -4,19 +4,24 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    background-color: hsl(345, 72%, 70%)
+    background-color: hsl(345, 72%, 70%);
+    
 }
 
-.menu{  
+.navbar .menu{  
+    height: 100%;
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.85rem;
     list-style: none;
 }
 
 .avatar{
     position: relative;
     font-family: 'Gloria Halleleluja', cursive;
-    top: -0.4rem;
+    top: 0.5rem;
 
 }
 
@@ -26,16 +31,20 @@
 
 .logo{
     position: relative;
-    top: 0.10rem;
-    justify-self: flex-end;
+    top: 0.6rem;
+    
 
 }
 
 .title{
-    margin-top: 2rem;
+    font-size: 2.5rem;
+    letter-spacing: 0.25rem;
     font-family: 'Gloria Halleleluja', cursive;
     color: antiquewhite;
-    margin-right: 4rem;
+    text-shadow: 2px 2px 2px gray;
+    position: relative;
+    right: 16.5rem;
+    
     
 }
 
@@ -45,8 +54,8 @@
 
 .link{
     position: relative;
-    margin-left: 1rem;
-    top: 1.5rem;
+    
+    
     text-decoration: none;
     font-family: 'Gloria Halleleluja', cursive;
     
@@ -69,4 +78,69 @@
 .linkProfile:active{
     color: beige;
     text-shadow: 1px 1px 1px black;
+}
+
+
+/* mobile */
+
+@media screen and (max-width:480px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo{
+        position: relative;
+        left: 6rem;
+        top: 2.5rem;
+        width: 3rem;
+        height: 1rem;
+        
+    }
+
+    .title {
+        display: flex;
+        margin-left: 25rem;
+        font-size: 1.5rem;
+        align-self: center;
+    }
+
+    .menu { position: relative;
+        right: 10rem;
+        bottom: 3rem;
+     }
+}
+
+/* tablet */
+
+@media screen and (min-width:480px) and (max-width:768px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo{
+        position: relative;
+        left: 8rem;
+        top: 2.5rem;
+        width: 3rem;
+        height: 1rem;
+        
+    }
+
+    .title {
+        display: flex;
+        margin-left: 18rem;
+        font-size: 2rem;
+        align-self: center;
+    }
+
+    .menu { position: relative;
+        right: 10rem;
+        bottom: 3rem;
+     }
 }

@@ -96,3 +96,59 @@ table tr td {
 .book p:hover {
     color: white;
 }
+
+
+/* mobile */
+
+@media screen and (max-width:480px) {
+    table{
+        width: 80%;
+    }
+
+    .book {
+        position: relative;
+        right: 2rem;
+    }
+
+    table p {
+        font-size: 0.75rem;
+        font-weight: bold;
+    }
+}
+
+/* tablets */
+
+@media screen and (min-width:480px) and (max-width:700px) {
+
+    table{
+        width: 80%;
+    }
+
+    .book {
+        position: relative;
+        right: 2rem;
+    }
+
+    table p {
+        font-size: 0.75rem;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width:700px) and (max-width:900px) {
+
+    table{
+        width: 80%;
+    }
+
+    .book {
+        position: relative;
+        right:1rem;
+    }
+
+    table p {
+        font-size: 0.75rem;
+        font-weight: bold;
+    }
+}
+    

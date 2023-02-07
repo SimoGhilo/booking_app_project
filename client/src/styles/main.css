@@ -65,7 +65,8 @@ filter: grayscale(0);
 .country img {
     width: 30rem;
     height: 20rem;
-    box-shadow: 2px 2px 2px 2px gray;
+    box-shadow: 2px  2px 2px gray;
+    margin-bottom: 0.4rem;
     filter: grayscale(0%);
 }
 
@@ -89,6 +90,41 @@ h4{
     position: absolute;
     left: 6rem;
     font-family: 'Fjalla One', sans-serif;
-    top: 0.65rem;
+    top: 1rem;
     text-shadow: 2px 2px gray;
+}
+
+
+
+
+/* mobile */
+
+@media screen and (max-width:480px) {
+
+    .cities {
+        display: none;
+    }
+
+    .country img{
+        margin-top: 4rem;
+    }
+
+    .country img:hover{
+        filter: grayscale(0%);
+        cursor:auto;
+    }
+
+    .country img:active{
+        filter: grayscale(0%);
+        cursor:auto;
+        box-shadow: 2px  2px 2px gray;
+    }
+
+
+}
+
+/* tablet */
+
+@media screen and (min-width:480px) and (max-width:768px) {
+    
 }

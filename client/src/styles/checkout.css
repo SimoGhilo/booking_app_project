@@ -109,3 +109,27 @@ h5{
 .hotel-details p {
     font-weight: bold;
 }
+
+
+/* mobile */
+
+@media screen and (max-width:480px) {
+
+    .wrapper{
+        width: fit-content;
+    }
+
+    .checkout-container{
+        width: 100%;
+        
+    }
+
+    .hotel-details img {
+         display: none;}
+}
+
+/* tablet */
+
+@media screen and (min-width:480px) and (max-width:768px) {
+    
+}
