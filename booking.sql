@@ -261,13 +261,14 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.bookings (booking_id, user_id, hotel_id, room_id, check_in_date, check_out_date, price, length, guests, room_name) FROM stdin;
-20	11	3	8	2023-02-06	2023-02-08	180	2	1	Single Room
-23	11	2	9	2023-02-06	2023-02-07	100	1	1	Double Room
 29	11	2	9	2023-02-09	2023-02-12	300	3	1	Double Room
 30	11	2	9	2023-02-10	2023-02-12	200	2	1	Double Room
 31	11	2	9	2023-02-10	2023-02-12	200	2	1	Double Room
 32	11	3	7	2023-02-20	2023-02-26	1056	6	1	Double Room
 33	11	3	7	2023-02-22	2023-02-25	528	3	1	Double Room
+34	11	6	2	2023-02-27	2023-02-28	70	1	1	Doble habitaction
+36	27	4	6	2023-02-20	2023-02-26	4500	6	1	Suite vista Piazza San Marco
+37	27	4	4	2023-02-22	2023-02-25	1050	3	1	Stanza Doppia
 \.
 
 
@@ -318,8 +319,12 @@ COPY public.rooms (room_id, room_name, hotel_id, room_img_1, room_img_2, room_im
 11	Junior Suite	1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/362463004.jpg?k=e48da5ff2df09f32aff142df6e40e2344f874fcb2364f807df03f954b4cf8a7f&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/72107112.jpg?k=37c3340da3abc34bfa7efe4bf0f71d1f09dff0c6dae214c66f1b01f8d2733a81&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/63722146.jpg?k=e7fb6eb502c404f6f8b527b9ff7a23fbc9d477900708e0b1c0ec3a9ce0f54e90&o=&hp=1	2	250
 7	Double Room	3	https://cf.bstatic.com/xdata/images/hotel/max1024x768/46518746.jpg?k=3c48b9cb79414ec7a6b8e04a6b9cc0e9c7f5d05b436e9af315293f7572b5d37f&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/69882886.jpg?k=a081a97151238df8524c249fa1887298dd0fbb9369d77f0607e6b768299b5afa&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/115823954.jpg?k=1bff7e16228635c38e79d5d389b2425fcc343db7fb524020d12d91275b258f1f&o=&hp=1	2	176
 13	Queen Room	1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/72107080.jpg?k=1bb54fd99be10aeab829ddcf48f8f1a0dec3cae24a39d6d9da332c4fcef0dc5f&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/72107084.jpg?k=ebde35878fc1d8d29e5fd754b7d0d63db98db711cee65d6efa72a747e7c37ceb&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/92881583.jpg?k=b41279d9b08b3b38c76cc347c13b0fb85da58ab3b533a865e7e21b2b5361f439&o=&hp=1	2	160
+15	Suite	8	https://www.homehouse.co.uk/propeller/uploads/2017/11/200217_HH_011-900x800.jpg	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_007-900x800.jpg	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_009-900x800.jpg	4	900
 3	Stanza Doppia	5	https://cf.bstatic.com/xdata/images/hotel/max1024x768/181681997.jpg?k=d6b74f6875010d235310a4f6b5fc058890097dc1d1aeafca432aeea445d54a37&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/181678987.jpg?k=af80a40c32a518508d5d5c24a16ef5b25fc24b4d90d9cb5d1c1265e70cc04bba&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/181661849.jpg?k=df6d5705f770928cc0cb3555410154707aced94ecd852ab24a2363a8e0cfa0db&o=&hp=1	2	190
 9	Double Room	2	https://cf.bstatic.com/xdata/images/hotel/max1024x768/382857325.jpg?k=c0bfcfcff29100b84bc29e346b4e7fb76d4ce48cc26dc242983df216e6ee4914&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/382857255.jpg?k=3f5477240fd3b227a5eb38f027a48939feca96759d2668df7fc74ee6881dcf4d&o=&hp=1	https://cf.bstatic.com/xdata/images/hotel/max1024x768/109634219.jpg?k=c553c17a9b912bcbe3e458511792ec8a4d215b64b30bae976b1b2c04433e32a2&o=&hp=1	2	100
+14	Feature Room	8	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_024-900x800.jpg	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_026-900x800.jpg	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_022-900x800.jpg	3	350
+16	Mayfair Suite	7	https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-mayfair-suite-bed-room-propped-2400x1350-landscape-1600x900.jpg	https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-mayfair-suite-bathroom-propped-2400x1350-landscape-1600x900.jpg	https://www.dorchestercollection.com/wp-content/uploads/Mayfair-South-Audley-Street-Harrys-Bar-corner-web-904x904.jpg	3	995
+17	Superior Deluxe King Room	7	https://www.dorchestercollection.com/wp-content/uploads/the-dorchester-audley-penthouse-bedroom-1200x1600-portrait-872x1164.jpg	 https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-park-suite-view-2400x1350-landscape-1600x900.jpg	https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-park-suite-living-room-propped-1200x1600-portrait-872x1164.jpg	2	665
 \.
 
 
@@ -331,7 +336,9 @@ COPY public.users (user_id, user_name, email, user_password) FROM stdin;
 1	name	name@gmail.com	12345
 2	bubu	abc@gmail.com	password
 11	simo_ghilo	simoneghilotti@gmail.com	$2a$10$jMkc97oIgyKbbOtUp7EfRekTThEyhQclWdNUtN.T2lgROj8pcyY7S
-12	kyle_ghilo	kyleghilotti@gmail.com	$2a$10$SGEA5m8LIByinQ6jsHoYqe.QREkGxkRYRhg9B0CkgjdxHwPZWFa4q
+27	kyle_ghilo	kyleghilotti@gmail.com	$2a$10$JBV3AFg.B/590qMAFui1NOeJGj26iIp5QYE/nvkUVwkq0Lq/qm9Yu
+28	mike_ghilo	mikeghilotti@gmail.com	$2a$10$XxvBi339hwY.5Vxuo0q0ReFD.sfwYfQfSZ56aMpT16dgpjkSo2NBe
+29	john_ghilo	johnghilotti@gmail.com	$2a$10$eiUdYLeyV0V0w6QqIn0FbeaJ2MTbB2P6T2SOr7xOXVHWr/W9U3HDu
 \.
 
 
@@ -339,7 +346,7 @@ COPY public.users (user_id, user_name, email, user_password) FROM stdin;
 -- Name: bookings_booking_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bookings_booking_id_seq', 33, true);
+SELECT pg_catalog.setval('public.bookings_booking_id_seq', 39, true);
 
 
 --
@@ -367,7 +374,7 @@ SELECT pg_catalog.setval('public.rooms_room_id_seq', 13, true);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 12, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 29, true);
 
 
 --

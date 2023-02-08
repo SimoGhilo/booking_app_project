@@ -4,6 +4,12 @@ const localStartegy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook');
 const pool = require('./database');
 
+require("dotenv").config();
+
+console.log(process.env.FACEBOOK_CLIENT_SECRET_KEY)
+
+
+
 
 function initialize(passport) {
 
@@ -62,7 +68,7 @@ function initialize(passport) {
 
     passport.use(new FacebookStrategy({
         clientID: "1845698709138421",
-        clientSecret: "e395ca5b512589acb1ef6080d57dafee",
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET_KEY,
         callbackURL: "http://localhost:5000/auth/facebook/callback",
         profileFields: ["id", "name", "email"]
     },

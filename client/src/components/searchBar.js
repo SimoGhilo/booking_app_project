@@ -56,6 +56,10 @@ const SearchBar = (props) => {
         setIsSearching(!isSearching)
     }
 
+    function handleChange(e) {
+        setLocation(e.target.value)
+        setIsSearching(true)
+    }
     console.log('is searching', isSearching)
 
 
@@ -90,7 +94,7 @@ const SearchBar = (props) => {
                     <h2 className='subtitle'>Find your perfect stay...</h2>
                     <div className='searchBar'>
                         <div className='field'>
-                            <input type='text' className='input' placeholder='Where to ?' onChange={(e) => setLocation(e.target.value)} required />
+                            <input type='text' className='input' placeholder='Where to ?' onChange={(e) => handleChange(e)} required />
                         </div>
                         <p>Check in</p>
                         <DateSelectorStart handleCheckInDate={handleCheckInDate} startDate={startDate} todaysDate={todaysDate} />
