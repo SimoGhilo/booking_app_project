@@ -128,7 +128,7 @@ const SearchBar = (props) => {
                 }
             </>}
             <Routes>
-                <Route path='/:hotel_name' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} />}></Route>
+                <Route path='/:hotel_name' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} isSearching={isSearching} setIsSearching={setIsSearching} />}></Route>
             </Routes>
             {isCheckedOut && <Routes>
                 <Route path='/:hotel_id/:room_id/checkout' element={<Checkout lengthStay={lengthStay} startDate={/*check_in_date */startDate} endDate={/*check_out_date */ endDate} guests={guests} setStartDate={setStartDate} setEndDate={setEndDate} todaysDate={todaysDate} tomorrow={tomorrow} isSearching={isSearching} setIsSearching={setIsSearching} />}></Route>

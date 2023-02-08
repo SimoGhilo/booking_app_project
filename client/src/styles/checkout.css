@@ -114,22 +114,27 @@ h5{
 /* mobile */
 
 @media screen and (max-width:480px) {
-
     .wrapper{
-        width: fit-content;
+        width: auto;
     }
 
-    .checkout-container{
-        width: 100%;
-        
+    .bd {
+        display: none;
     }
 
-    .hotel-details img {
-         display: none;}
 }
 
 /* tablet */
 
-@media screen and (min-width:480px) and (max-width:768px) {
-    
+@media screen and (min-width:480px) and (max-width:901px) {
+
+    .wrapper{
+        display: block;
+    }
+    .hotel-img {
+        display: none;
+    }
+    .bd {
+        display: none;
+    }
 }

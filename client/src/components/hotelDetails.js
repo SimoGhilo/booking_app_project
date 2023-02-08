@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/hotelDetails.css';
@@ -19,6 +19,7 @@ const HotelDetails = (props) => {
     let loginStatus = useSelector(state => state.loginStatus.isLoggedIn)
     let isCheckedOut = useSelector(state => state.loginStatus.isCheckedOut);
     let dispatch = useDispatch();
+    let navigate = useNavigate();
 
 
     let [rooms, setRooms] = useState([]);
@@ -48,10 +49,13 @@ const HotelDetails = (props) => {
         });
         setLength(props.lengthStay);
 
-    }, [hotel_name, isCheckedOut, toggleCheckout, props.lengthStay, length, startDate, endDate])
+    }, [hotel_name, isCheckedOut, toggleCheckout, props.lengthStay, length, startDate, endDate, goBack])
 
 
-
+    function goBack() {
+        navigate(-1)
+        props.setIsSearching(true);
+    }
 
     return (
         <>
@@ -90,6 +94,7 @@ const HotelDetails = (props) => {
                                         </>
                                     ))}
                                 </table>
+                                <button className='back' onClick={goBack}><p>Back to search</p></button>
                             </div>
                         </>
                     ))}

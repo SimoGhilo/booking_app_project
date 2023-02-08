@@ -134,7 +134,7 @@ const Checkout = (props) => {
 
                         ))}
                         {room.map((r) =>
-                            <img src={r.hotel_img} />
+                            <img className='hotel-img' src={r.hotel_img} />
 
                         )}
                         <button className='now'><Link style={linkStyle} to={"/"} onClick={switchCheckout}><p className='complete' onClick={book}>Complete Booking</p></Link></button>

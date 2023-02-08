@@ -149,3 +149,42 @@ background-color: hsl(345, 72%, 70%)
     font-size: 0.8rem;
 }
 
+
+/* mobile */
+
+@media screen and (max-width:480px) {
+
+    .loggedIn{
+        font-size: 0.75rem;
+    }
+
+    .loggedIn h3{
+        font-size: 2rem;
+
+    }
+
+    .loggedIn .trips .booking .info-container {
+        line-height: 0.7rem;
+    }
+
+    .loggedIn .trips .booking img{
+        height: 10rem;
+        width: 15rem;
+        box-shadow: 1px 1px 1px 1px gray;
+        
+    }
+}
+
+/* tablet */
+
+@media screen and (min-width:480px) and (max-width:900px) {
+
+    .loggedIn .trips .booking img{
+        height: 15rem;
+        width: 20rem;
+        box-shadow: 1px 1px 1px 1px gray;
+        
+    }
+    
+}
+

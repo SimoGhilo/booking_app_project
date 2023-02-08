@@ -125,6 +125,21 @@ h4{
 
 /* tablet */
 
-@media screen and (min-width:480px) and (max-width:768px) {
+@media screen and (min-width:480px) and (max-width:900px) {
+
+    .country img{
+        margin-top: 4rem;
+    }
+
+    .country img:hover{
+        filter: grayscale(0%);
+        cursor:auto;
+    }
+
+    .country img:active{
+        filter: grayscale(0%);
+        cursor:auto;
+        box-shadow: 2px  2px 2px gray;
+    }
     
 }
