@@ -10,6 +10,7 @@ const cors = require('cors');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+require("dotenv").config();
 
 // Initialize passport & session
 
@@ -214,6 +215,41 @@ app.put(`/update/:booking_id`, (req, res) => {
     /// on hold, have to figure out how to handle availability
 
     pool.query()
+})
+
+
+// Stripe 
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+app.post('/payment', cors(), async (req, res) => {
+
+    let { amount, id } = req.body;
+
+    try {
+
+        const payment = await stripe.paymentIntents.create({
+            amount: amount,
+            currency: "GBP",
+            description: "Accommodation",
+            payment_method: id,
+            confirm: true,
+        })
+
+        console.log("Payment", payment)
+        res.json({
+            message: "Payment successful",
+            success: true
+        })
+
+    } catch (error) {
+        console.log("Payment error", error)
+        res.json({
+            message: "Payment failed",
+            success: false
+        })
+    }
+
 })
 
 

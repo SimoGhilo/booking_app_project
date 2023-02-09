@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { toggleCheckout } from '../slice/loginSlice';
+import StripeContainer from './stripe/stripeContainer';
 import '../styles/checkout.css';
 
 
@@ -102,7 +103,7 @@ const Checkout = (props) => {
                             <p>{props.startDate.toLocaleString().slice(0, 10)}</p>
                             <h6>Check out</h6>
                             <p>{props.endDate.toLocaleString().slice(0, 10)}</p>
-                            <h6>Total length of stay: {props.lengthStay} {stringNight}</h6>
+                            <h6 className='length'>Total length of stay: {props.lengthStay} {stringNight}</h6>
                         </div>
                         <div className='room-selection'>
                             <h5>Your room selection:</h5>
@@ -137,6 +138,7 @@ const Checkout = (props) => {
                             <img className='hotel-img' src={r.hotel_img} />
 
                         )}
+                        <StripeContainer price={price[0]} switchCheckout={switchCheckout} book={book} />
                         <button className='now'><Link style={linkStyle} to={"/"} onClick={switchCheckout}><p className='complete' onClick={book}>Complete Booking</p></Link></button>
                     </section>
                 </>}

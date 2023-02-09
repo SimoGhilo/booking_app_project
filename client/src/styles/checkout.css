@@ -36,10 +36,28 @@ h5{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
+    top: 1.5rem;
     
     
     
+}
+
+.booking-details .room-selection {
+    position: relative;
+    top: 1.25rem;
     
+}
+
+.booking-details .room-pricing {
+    position: relative;
+    top: 1.25rem;
+    
+}
+
+.booking-details .check-in-out .length{
+    position: relative;
+    top: 2.10rem;
 }
 
 .hotel-details{
@@ -108,6 +126,11 @@ h5{
 
 .hotel-details p {
     font-weight: bold;
+}
+
+.now{
+    position: relative;
+    bottom: 1.25rem;
 }
 
 
