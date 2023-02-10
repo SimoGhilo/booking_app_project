@@ -7,7 +7,6 @@ import StripeContainer from './stripe/stripeContainer';
 import '../styles/checkout.css';
 
 
-let linkStyle = { textDecoration: "none", color: "black" };
 
 
 const Checkout = (props) => {
@@ -17,13 +16,12 @@ const Checkout = (props) => {
     let loginStatus = useSelector(state => state.loginStatus.isLoggedIn)
     let isCheckedOut = useSelector(state => state.loginStatus.isCheckedOut);
     let dispatch = useDispatch();
-    let navigate = useNavigate();
+
 
     function switchCheckout() {
         props.setIsSearching(true);
         props.setStartDate(props.todaysDate);
         props.setEndDate(props.tomorrow);
-        navigate('/')
         dispatch(toggleCheckout(false));
     }
 
@@ -138,9 +136,9 @@ const Checkout = (props) => {
                             <img className='hotel-img' src={r.hotel_img} />
 
                         )}
-                        <StripeContainer price={price[0]} switchCheckout={switchCheckout} book={book} />
-                        <button className='now'><Link style={linkStyle} to={"/"} onClick={switchCheckout}><p className='complete' onClick={book}>Complete Booking</p></Link></button>
+
                     </section>
+                    <StripeContainer price={price[0]} switchCheckout={switchCheckout} book={book} />
                 </>}
 
             </div>

@@ -85,7 +85,7 @@ const Profile = (props) => {
                 <div className='avatar-info'>
                     <p className='avatar'>Username : {user.user_name}</p>
                     <p className='avatar'>Email : {user.email}</p>
-                    <button onClick={logout}>Logout</button>
+                    <button className='logout' onClick={logout}>Logout</button>
                 </div>
                 <h2>Bookings & Trips</h2>
                 <div className='trips'>
@@ -94,8 +94,8 @@ const Profile = (props) => {
                         <div className='booking'>
                             <div className='property-info'>
                                 <h3>{booking.hotel_name}</h3>
-                                <p>{booking.location_name}</p>
-                                <p>{booking.country}</p>
+                                <p className='pos'>{booking.location_name}</p>
+                                <p className='pos'>{booking.country}</p>
                                 <img src={booking.hotel_img} />
                                 <div className="button-container">
                                     <button className='cancel' onClick={() => cancel(booking.booking_id)}><p>Cancel booking</p></button>

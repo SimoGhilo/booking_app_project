@@ -13,10 +13,9 @@
     flex-direction: column;
 }
 
-.avatar-info button {
+.avatar-info .logout {
     margin-top: 2rem;
     background-color:hsl(244, 100%, 65%);
-    
     border: none;
     color: white;
     padding: 15px 32px;
@@ -24,10 +23,11 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 2%;
+    border-radius: 4%;
+    height: 3.5rem;
 }
 
-.avatar-info button:hover{
+.avatar-info .logout:hover{
     cursor: pointer;
     background-color:rgb(25, 22, 77);
     color: wheat;
@@ -36,6 +36,7 @@
 
 .avatar-info p {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 }
 
 .loggedIn h1 {
@@ -76,7 +77,7 @@ background-color: hsl(345, 72%, 70%)
 
 
 .loggedIn .trips .booking .property-info {
-    margin-right: 3rem;
+    margin-right: 4rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -84,6 +85,7 @@ background-color: hsl(345, 72%, 70%)
     margin-bottom: 0.8rem;
     margin-left: 1rem;
     font-weight: bold;
+    flex-grow: 1;
 
 }
 
@@ -104,6 +106,8 @@ background-color: hsl(345, 72%, 70%)
     margin-right: 1rem;
     background-color:wheat;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    bottom:1rem;  
 }
 
 .loggedIn .trips .booking .property-info .button-container .modify{
@@ -113,6 +117,8 @@ background-color: hsl(345, 72%, 70%)
     align-items: center;
     justify-content: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    bottom:1rem;   
 }
 
   
@@ -137,10 +143,14 @@ background-color: hsl(345, 72%, 70%)
 }
 
 .loggedIn .trips .booking .info-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     text-align: center;
     line-height: 1.4rem;
     margin-right: 0.8rem;
     font-weight: bold;
+    
     
     
 }
@@ -163,8 +173,26 @@ background-color: hsl(345, 72%, 70%)
 
     }
 
+    .property-info h3{
+        font-size: 1.35rem;
+        position: relative;
+        bottom:3.25rem;
+    }
+    .property-info .pos{
+        font-size: 1.35rem;
+        position: relative;
+        bottom: 3.5rem;
+    }
+
     .loggedIn .trips .booking .info-container {
         line-height: 0.7rem;
+        position: relative;
+        right: 8rem;
+        
+    }
+    .loggedIn .trips .booking .property-info {
+        position: relative;
+        left: 6rem;
     }
 
     .loggedIn .trips .booking img{
@@ -173,6 +201,20 @@ background-color: hsl(345, 72%, 70%)
         box-shadow: 1px 1px 1px 1px gray;
         
     }
+    .loggedIn .trips .booking .property-info .button-container .modify{
+        margin-left: 0rem;
+        position: relative;
+        top:2rem;
+        right:14rem;
+    }
+
+    .loggedIn .trips .booking .property-info .button-container .cancel{
+        margin-left: -2rem;
+        position: relative;
+        left: 2rem;
+
+    }
+
 }
 
 /* tablet */
@@ -184,6 +226,31 @@ background-color: hsl(345, 72%, 70%)
         width: 20rem;
         box-shadow: 1px 1px 1px 1px gray;
         
+    }
+
+    .loggedIn .trips .booking .property-info .button-container .modify{
+        margin-left: 0rem;
+        position: relative;
+        top:2rem;
+        right:14rem;
+    }
+
+    .loggedIn .trips .booking .property-info .button-container .cancel{
+        margin-left: -2rem;
+        position: relative;
+        left: 2rem;
+
+    }
+
+    .loggedIn .trips .booking .info-container {
+        line-height: 0.7rem;
+        position: relative;
+        right: 2rem;
+        
+    }
+    .loggedIn .trips .booking .property-info {
+        position: relative;
+        left: 4rem;
     }
     
 }
