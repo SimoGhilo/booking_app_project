@@ -81,8 +81,8 @@ const Profile = (props) => {
     return (
         <>{loginStatus &&
             <div className='loggedIn'>
-                <h1>Account</h1>
                 <div className='avatar-info'>
+                    <h1>Account</h1>
                     <p className='avatar'>Username : {user.user_name}</p>
                     <p className='avatar'>Email : {user.email}</p>
                     <button className='logout' onClick={logout}>Logout</button>

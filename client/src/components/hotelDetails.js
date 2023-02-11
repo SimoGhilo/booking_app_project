@@ -71,8 +71,8 @@ const HotelDetails = (props) => {
                                 <img src={rooms[key].room_img_3} />
                                 <img src={rooms[key].hotel_img} />
                             </div>
-                            <h2 className='availability'>Availability</h2>
                             <div className='table-wrapper'>
+                                <h2 className='availability'>Availability</h2>
                                 <table>
                                     <tr className='header'>
                                         <th><p>Room Type</p></th>

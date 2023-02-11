@@ -11,6 +11,8 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .avatar-info .logout {
@@ -42,6 +44,7 @@
 .loggedIn h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 2.5rem;
+    
 }
 
 .loggedIn h2{
@@ -166,10 +169,26 @@ background-color: hsl(345, 72%, 70%)
 
     .loggedIn{
         font-size: 0.75rem;
+
     }
 
     .loggedIn h3{
         font-size: 2rem;
+
+    }
+
+    .loggedIn .trips .booking{
+        position: relative;
+        left:2rem;
+ 
+    }
+    .loggedIn .trips h5 {
+        display: none;
+    }
+
+    .loggedIn .trips .booking div{
+        display: none;
+/* Not working */
 
     }
 
@@ -226,6 +245,9 @@ background-color: hsl(345, 72%, 70%)
         width: 20rem;
         box-shadow: 1px 1px 1px 1px gray;
         
+    }
+    .loggedIn .trips h5 {
+        display: none;
     }
 
     .loggedIn .trips .booking .property-info .button-container .modify{
