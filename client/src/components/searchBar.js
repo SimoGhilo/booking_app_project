@@ -32,15 +32,27 @@ const SearchBar = (props) => {
     let [endDate, setEndDate] = useState(tomorrow); // set check out date, default tomorrow
     const [guests, setGuests] = useState(1);
 
+    // debug
 
     console.log('startDate: ', startDate);
     console.log('end date', endDate);
+
+    // helper functions for date formatting
+
+    let check_in_date = startDate.toLocaleDateString().split(/\//);
+    check_in_date = [check_in_date[2], check_in_date[1], check_in_date[0]].join('-');
+    let check_out_date = endDate.toLocaleDateString().split(/\//);
+    check_out_date = [check_out_date[2], check_out_date[1], check_out_date[0]].join('-');
+
+
 
     const [lengthStay, setLengthStay] = useState(Math.floor((endDate.getTime() - startDate.getTime()) / 86400000)); /// set stay length in days
 
     console.log('length stay in search bar', lengthStay);
 
     const [properties, setProperties] = useState([]);
+
+
 
     const [isSearching, setIsSearching] = useState(true);
 
@@ -122,7 +134,7 @@ const SearchBar = (props) => {
                                                     <figcaption><strong><p>{prop.hotel_name}</p></strong></figcaption>
                                                     <p className='place'>{prop.location_name}</p>
                                                     <p className='description'>{prop.hotel_description}</p>
-                                                    <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}`} onClick={toggleSearch} ><p>View Hotel</p></Link></button>
+                                                    <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}/${prop.hotel_id}/${check_in_date}/${check_out_date}`} onClick={toggleSearch} ><p>View Hotel</p></Link></button>
                                                 </section>
                                             </div>
                                         </>))}
@@ -132,7 +144,7 @@ const SearchBar = (props) => {
                 }
             </>}
             <Routes>
-                <Route path='/:hotel_name' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} isSearching={isSearching} setIsSearching={setIsSearching} />}></Route>
+                <Route path='/:hotel_name/:hotel_id/:arrival_date/:departure_date' element={<HotelDetails guests={guests} startDate={startDate} endDate={endDate} lengthStay={lengthStay} isSearching={isSearching} setIsSearching={setIsSearching} />}></Route>
             </Routes>
             {isCheckedOut && <Routes>
                 <Route path='/:hotel_id/:room_id/checkout' element={<Checkout lengthStay={lengthStay} startDate={/*check_in_date */startDate} endDate={/*check_out_date */ endDate} guests={guests} setStartDate={setStartDate} setEndDate={setEndDate} todaysDate={todaysDate} tomorrow={tomorrow} isSearching={isSearching} setIsSearching={setIsSearching} />}></Route>

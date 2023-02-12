@@ -12,10 +12,22 @@ const getRooms = (req, res) => {
 };
 
 const getRoomsByHotelName = (req, res) => {
+
     const { hotel_name } = req.params
+    const { hotel_id } = req.params
+    const { arrival_date, departure_date } = req.params;
+
+    // debug
+    console.log('in server arrial_date', arrival_date)
+    console.log('in server departure_date', departure_date)
+
     try {
-        const query = `select * from rooms left join hotels on rooms.hotel_id = hotels.hotel_id left join locations on hotels.location_id = locations.location_id where hotel_name='${hotel_name}'`;
-        //console.log(query)
+        const query = `select * from rooms  left join hotels on rooms.hotel_id = hotels.hotel_id 
+        inner join locations on hotels.location_id = locations.location_id where hotel_name='${hotel_name}' and rooms.hotel_id =${hotel_id}
+      and rooms.room_id not in ( select bookings.room_id from bookings where check_in_date between ('${arrival_date}') and ('${departure_date}')
+    or  check_out_date between ('${arrival_date}') and ('${departure_date}') ) 
+    or rooms.hotel_id = ${hotel_id} and rooms.room_id in (select bookings.room_id from bookings where check_in_date = '${departure_date}' or check_out_date = '${arrival_date}')`;
+        console.log(query)
         pool.query(query, (err, result) => {
             if (err) { console.error(err); }
             res.status(200).json(result.rows)
