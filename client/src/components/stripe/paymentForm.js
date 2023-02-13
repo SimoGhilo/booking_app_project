@@ -3,10 +3,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './paymentForm.css';
-import { Link, useNavigate } from 'react-router-dom';
 
-
-let linkStyle = { textDecoration: "none", color: "black" };
 
 const CARD_OPTIONS = {
     iconStyle: "solid",
@@ -35,17 +32,12 @@ const PaymentForm = (props) => {
     let user = useSelector(state => state.loginStatus.user)
 
 
-    const navigate = useNavigate();
-
     const [success, setSuccess] = useState(false)
 
     const switchCheckout = props.switchCheckout;
     const book = props.book;
 
-    console.log('success', success)
-
     useEffect(() => {
-
     }, [success, setSuccess])
 
     const stripe = useStripe()

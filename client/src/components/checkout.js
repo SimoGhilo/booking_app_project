@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { toggleCheckout } from '../slice/loginSlice';
 import StripeContainer from './stripe/stripeContainer';
@@ -44,6 +43,7 @@ const Checkout = (props) => {
         })
     }, [isCheckedOut, toggleCheckout]);
 
+    // Helper functions to manipulate date formats
 
     let check_in_date = props.startDate.toLocaleDateString().split(/\//);
     check_in_date = [check_in_date[2], check_in_date[1], check_in_date[0]].join('-');
@@ -117,7 +117,7 @@ const Checkout = (props) => {
                         </div>
                     </section>
                     <section className='hotel-details'>
-                        <h5>Hotel</h5>
+                        <h5 className='hotel'>Hotel</h5>
                         {room.map((r) => (
                             <p className='name'>{r.hotel_name}</p>
 

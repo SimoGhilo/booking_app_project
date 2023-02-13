@@ -54,10 +54,6 @@ app.use(cors({
 // cookie parser
 app.use(cookieParser('secret'))
 
-app.get('/', (req, res) => {
-    res.send('All working')
-})
-
 
 
 // Routes
@@ -89,7 +85,7 @@ app.post('/register', async (req, res) => {
     try {
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        // Debug console.log('hashedPassword', hashedPassword)
+
         pool.query(`select * from users where email=${email}`, (err, result) => {
 
             if (err) { throw err };
@@ -121,8 +117,6 @@ app.post('/register', async (req, res) => {
 app.post('/login', passport.authenticate('local', {}), (req, res) => {
 
     if (req.session.passport.user) {
-        // debug
-        //console.log(req.session.passport.user)
         res.send({ loggedIn: true, user: req.session.passport.user })
     } else {
         res.send({ loggedIn: false, message: 'Error authent' })
@@ -164,7 +158,7 @@ app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: 'http://localhost:3000/' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        //console.log('callback facebook user', req.user);
+
         res.redirect('http://localhost:3000/');
     });
 
@@ -204,17 +198,6 @@ app.delete(`/cancel/:booking_id`, async (req, res) => {
         if (err) { console.log(err); }
 
     })
-})
-
-/// modify a booking
-
-app.put(`/update/:booking_id`, (req, res) => {
-
-    const booking_id = req.params.booking_id;
-
-    /// on hold, have to figure out how to handle availability
-
-    pool.query()
 })
 
 

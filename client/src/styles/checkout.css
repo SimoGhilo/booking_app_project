@@ -6,7 +6,7 @@
     align-items: flex-start;
 }
 .wrapper-checkout{
-    width: 90%;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +22,9 @@
 h5{
     font-size: 1.5rem;
 }
+.hotel {
+    margin-top:1rem;
+}
 
 .checkout-container{
     display: flex;
@@ -30,7 +33,10 @@ h5{
     
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: hsl(345, 72%, 70%);
-    width: 75%;
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    /* margin-top: 2rem; */
 
     
 
@@ -56,16 +62,6 @@ h5{
     
 }
 
-.booking-details .room-pricing {
-   /* position: relative;
-    top: 1.25rem;*/
-    
-}
-
-.booking-details .check-in-out .length{
-   /* position: relative;
-    top: 2.10rem;*/
-}
 
 .hotel-details{
     display: flex;
@@ -135,10 +131,7 @@ h5{
     font-weight: bold;
 }
 
-.now{
-    /* position: relative;
-    bottom: 1.25rem; */
-}
+
 
 .stripe{
     width: 90%;
@@ -159,6 +152,7 @@ h5{
         display: none;
     }
 
+
     .wrapper-checkout .checkout-container{
         font-size: 0.75rem;
         width: 96%;
@@ -171,6 +165,7 @@ h5{
         width: 100%;
         height: 100px;
     }
+
 
     .room-selection > h5{
         font-size: 1rem;
@@ -185,12 +180,17 @@ h5{
 
 @media screen and (min-width:480px) and (max-width:901px) {
 
+    .wrapper-checkout{
+        margin-top: 2rem;
+    }
+
     .wrapper{
         display: block;
     }
-    /* .hotel-img {
-        display: none;
-    } */
+    .hotel-img {
+       width: 100%;
+       height: 200px;
+    }
     .bd {
         display: none;
     }

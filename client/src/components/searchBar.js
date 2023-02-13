@@ -12,12 +12,10 @@ import DateSelectorEnd from './dateSelectorEnd';
 
 let linkStyle = { textDecoration: "none", color: "black" };
 
-const SearchBar = (props) => {
+const SearchBar = () => {
 
     // Redux state 
 
-    let loginStatus = useSelector(state => state.loginStatus.isLoggedIn);
-    let user = useSelector(state => state.loginStatus.user);
     let isCheckedOut = useSelector(state => state.loginStatus.isCheckedOut);
 
     let todaysDate = new Date();
@@ -32,10 +30,6 @@ const SearchBar = (props) => {
     let [endDate, setEndDate] = useState(tomorrow); // set check out date, default tomorrow
     const [guests, setGuests] = useState(1);
 
-    // debug
-
-    console.log('startDate: ', startDate);
-    console.log('end date', endDate);
 
     // helper functions for date formatting
 
@@ -44,17 +38,22 @@ const SearchBar = (props) => {
     let check_out_date = endDate.toLocaleDateString().split(/\//);
     check_out_date = [check_out_date[2], check_out_date[1], check_out_date[0]].join('-');
 
+    // Helper function to capitalize the first letter of location
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
 
 
     const [lengthStay, setLengthStay] = useState(Math.floor((endDate.getTime() - startDate.getTime()) / 86400000)); /// set stay length in days
 
-    console.log('length stay in search bar', lengthStay);
+
 
     const [properties, setProperties] = useState([]);
-
-
-
     const [isSearching, setIsSearching] = useState(true);
+
+    // Handling changes
 
     function handleCheckInDate(e) {
         let checkIn = new Date(e)
@@ -69,10 +68,10 @@ const SearchBar = (props) => {
     }
 
     function handleChange(e) {
-        setLocation(e.target.value)
+        setLocation(capitalizeFirstLetter(e.target.value))
         setIsSearching(true)
     }
-    console.log('is searching', isSearching)
+
 
 
     useEffect(() => {
@@ -131,7 +130,7 @@ const SearchBar = (props) => {
                                             <div className="property">
                                                 <img className="property-pic" src={prop.hotel_img} />
                                                 <section className="description-property">
-                                                    <figcaption><strong><p>{prop.hotel_name}</p></strong></figcaption>
+                                                    <figcaption><strong><p className='hname'>{prop.hotel_name}</p></strong></figcaption>
                                                     <p className='place'>{prop.location_name}</p>
                                                     <p className='description'>{prop.hotel_description}</p>
                                                     <button className='showPrices'><Link style={linkStyle} to={`/${prop.hotel_name}/${prop.hotel_id}/${check_in_date}/${check_out_date}`} onClick={toggleSearch} ><p>View Hotel</p></Link></button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLoginStatus, setUser } from '../slice/loginSlice';
 import '../styles/login.css';
 
@@ -51,7 +51,7 @@ const Login = (props) => {
 
         if (result.status === 200) {
             const data = await result.json();
-            //console.log(data);
+
             // setting local status
             setIsLoggedin(data.loggedIn);
             // sending user info to redux store

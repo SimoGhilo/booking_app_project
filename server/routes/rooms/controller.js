@@ -22,7 +22,7 @@ const getRoomsByHotelName = (req, res) => {
     console.log('in server departure_date', departure_date)
 
     try {
-        const query = `select distinct on(room_name) * from rooms  left join hotels on rooms.hotel_id = hotels.hotel_id 
+        const query = `select distinct on(room_name) * from rooms inner join hotels on rooms.hotel_id = hotels.hotel_id 
         inner join locations on hotels.location_id = locations.location_id where hotel_name='${hotel_name}' and rooms.hotel_id =${hotel_id}
       and rooms.room_id not in ( select bookings.room_id from bookings where check_in_date between ('${arrival_date}') and ('${departure_date}')
     or  check_out_date between ('${arrival_date}') and ('${departure_date}') ) 

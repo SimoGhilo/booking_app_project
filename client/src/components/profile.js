@@ -69,6 +69,7 @@ const Profile = (props) => {
             method: 'DELETE',
         }).then((res) => {
             if (res.status) {
+
                 alert('Booking cancelled successfully');
             } else {
                 alert('Error removing item')
@@ -93,13 +94,12 @@ const Profile = (props) => {
                     {bookings.map((booking) => (
                         <div className='booking'>
                             <div className='property-info'>
-                                <h3>{booking.hotel_name}</h3>
+                                <h3 className='prop-name'>{booking.hotel_name}</h3>
                                 <p className='pos'>{booking.location_name}</p>
                                 <p className='pos'>{booking.country}</p>
                                 <img src={booking.hotel_img} />
                                 <div className="button-container">
-                                    <button className='cancel' onClick={() => cancel(booking.booking_id)}><p>Cancel booking</p></button>
-                                    <button className='modify' /*onClick={update}*/><p>Modify booking</p></button>
+                                    <button className='cancel' onClick={() => cancel(booking.booking_id)}>Cancel booking</button>
                                 </div>
                             </div>
                             <div className='info-container'>

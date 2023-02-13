@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Routes, Route, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/hotelDetails.css';
-import Checkout from './checkout';
 import { toggleCheckout } from '../slice/loginSlice';
 
 let linkStyle = { textDecoration: "none", color: "black" };
@@ -23,12 +22,9 @@ const HotelDetails = (props) => {
 
 
     let [rooms, setRooms] = useState([]);
-
     let [length, setLength] = useState(0);
 
-    // debug 
-    console.log('local state', length);
-    console.log('rooms here', rooms);
+
 
     // helper functions for date formatting
 
@@ -46,10 +42,6 @@ const HotelDetails = (props) => {
     let { hotel_id } = useParams()
 
     let stringNight = props.lengthStay > 1 ? 'nights' : 'night';
-    //console.log('Props', props.lengthStay)
-    // console.log('local state', length)
-
-    /// extra charge for weekends , will do later ... console.log(new Date(props.startDate).getDay(), new Date(props.endDate).getDay())
 
     useEffect(() => {
         let url = `http://localhost:5000/rooms/${hotel_name}/${hotel_id}/${check_in_date}/${check_out_date}`
@@ -70,13 +62,19 @@ const HotelDetails = (props) => {
         props.setIsSearching(true);
     }
 
-    const room_name = new Set(rooms.map(room => room.room_name))
-    console.log('set as name here', [...room_name])
+
+
 
     return (
         <>
             {!isCheckedOut && (
                 <div className='content'>
+                    {Object.keys(rooms).length <= 0 && (
+                        <div className='no-rooms'>
+                            <h2 className='no-result'>No rooms available in this hotel for the dates selected</h2>
+                            <button className='back' onClick={goBack}><p>Back to search</p></button>
+                        </div>
+                    )}
                     {Object.keys(rooms).splice(0, 1).map((key) => (
                         <>
                             <div className='room-container'>
