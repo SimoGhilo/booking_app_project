@@ -77,7 +77,7 @@ function initialize(passport) {
             const user_email = profile.emails[0].value;
 
             pool.query(`select * from users where email='${user_email}'`, (err, result) => {
-                //console.log('in passport', result);
+
                 if (err) { throw err; console.log(err) }
 
                 // user in db
@@ -105,9 +105,7 @@ function initialize(passport) {
 
                                 if (err) { return cb(null, false); } else {
 
-                                    const user = result.rows[0]
-
-                                    // console.log(user)
+                                    const user = result.rows[0];
 
                                     return cb(null, user);
                                 }

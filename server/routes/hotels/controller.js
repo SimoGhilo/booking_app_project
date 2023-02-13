@@ -1,19 +1,5 @@
 const pool = require('../../database');
 
-/* Not in use at the moment, using last function to search hotels by location 
-
-
-const getHotels = (req, res) => {
-    try {
-        pool.query('select * from hotels', (err, result) => {
-            res.status(200).json(result.rows)
-        })
-    } catch (error) {
-        console.error(error.message);
-    }
-};
-
-*/
 
 const getHotelById = (req, res) => {
     const id = req.params.id;

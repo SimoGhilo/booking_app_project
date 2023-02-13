@@ -17,9 +17,6 @@ const getRoomsByHotelName = (req, res) => {
     const { hotel_id } = req.params
     const { arrival_date, departure_date } = req.params;
 
-    // debug
-    console.log('in server arrial_date', arrival_date)
-    console.log('in server departure_date', departure_date)
 
     try {
         const query = `select distinct on(room_name) * from rooms inner join hotels on rooms.hotel_id = hotels.hotel_id 
@@ -42,7 +39,7 @@ const getRoomByRoomId = (req, res) => {
     const hotel_id = req.params.hotel_id
     const room_id = req.params.room_id;
     const query = `select * from rooms inner join hotels on rooms.hotel_id = hotels.hotel_id inner join locations on hotels.location_id=locations.location_id  where rooms.room_id=${room_id} and hotels.hotel_id=${hotel_id}`;
-    //console.log('query here', query);
+
     try {
         pool.query(query, (err, result) => {
             if (err) { console.error(err); }

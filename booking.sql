@@ -262,13 +262,12 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 
 COPY public.bookings (booking_id, user_id, hotel_id, room_id, check_in_date, check_out_date, price, length, guests, room_name) FROM stdin;
 29	11	2	9	2023-02-09	2023-02-12	300	3	1	Double Room
-30	11	2	9	2023-02-10	2023-02-12	200	2	1	Double Room
-31	11	2	9	2023-02-10	2023-02-12	200	2	1	Double Room
-32	11	3	7	2023-02-20	2023-02-26	1056	6	1	Double Room
-33	11	3	7	2023-02-22	2023-02-25	528	3	1	Double Room
-34	11	6	2	2023-02-27	2023-02-28	70	1	1	Doble habitaction
-36	27	4	6	2023-02-20	2023-02-26	4500	6	1	Suite vista Piazza San Marco
 37	27	4	4	2023-02-22	2023-02-25	1050	3	1	Stanza Doppia
+50	11	2	10	2023-02-11	2023-02-12	250	1	1	Family Room
+52	27	4	5	2023-02-18	2023-02-20	398	2	1	Stanza Singola
+54	27	4	4	2023-02-26	2023-02-28	700	2	1	Stanza Doppia
+55	27	4	18	2023-02-26	2023-02-28	700	2	1	Stanza Doppia
+56	27	6	2	2023-02-13	2023-02-14	70	1	1	Doble habitaction
 \.
 
 
@@ -325,6 +324,7 @@ COPY public.rooms (room_id, room_name, hotel_id, room_img_1, room_img_2, room_im
 14	Feature Room	8	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_024-900x800.jpg	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_026-900x800.jpg	https://www.homehouse.co.uk/propeller/uploads/2020/04/200217_HH_022-900x800.jpg	3	350
 16	Mayfair Suite	7	https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-mayfair-suite-bed-room-propped-2400x1350-landscape-1600x900.jpg	https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-mayfair-suite-bathroom-propped-2400x1350-landscape-1600x900.jpg	https://www.dorchestercollection.com/wp-content/uploads/Mayfair-South-Audley-Street-Harrys-Bar-corner-web-904x904.jpg	3	995
 17	Superior Deluxe King Room	7	https://www.dorchestercollection.com/wp-content/uploads/the-dorchester-audley-penthouse-bedroom-1200x1600-portrait-872x1164.jpg	 https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-park-suite-view-2400x1350-landscape-1600x900.jpg	https://www.dorchestercollection.com/wp-content/uploads/london-the-dorchester-park-suite-living-room-propped-1200x1600-portrait-872x1164.jpg	2	665
+18	Stanza Doppia	4	https://webbox.imgix.net/images/scmwttivwljcinct/10391956-765b-41ea-9819-f87cb46bc436.jpg?auto=format,compress&fit=crop&crop=entropy&w=1366	https://webbox.imgix.net/images/scmwttivwljcinct/e16b39d7-c006-4000-b0dd-e94db0c59d33.jpg?auto=format,compress&fit=crop&crop=entropy&w=1366	https://webbox.imgix.net/images/scmwttivwljcinct/4948e02a-1d30-4ec9-9dee-4b95d19272e2.jpg?auto=format,compress&fit=crop&crop=entropy&w=1366	2	350
 \.
 
 
@@ -346,7 +346,7 @@ COPY public.users (user_id, user_name, email, user_password) FROM stdin;
 -- Name: bookings_booking_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bookings_booking_id_seq', 39, true);
+SELECT pg_catalog.setval('public.bookings_booking_id_seq', 61, true);
 
 
 --
