@@ -91,10 +91,10 @@ const Checkout = (props) => {
 
 
     return (
-        <div className='wrapper'>
+        <div className='wrapper-checkout'>
             <h5 className='bd'>Your Booking details</h5>
             <div className='checkout-container'>
-                {loginStatus === true && <>
+                {loginStatus === true && <div className='general'>
                     <section className='booking-details'>
                         <div className='check-in-out'>
                             <h6>Check in</h6>
@@ -138,8 +138,10 @@ const Checkout = (props) => {
                         )}
 
                     </section>
-                    <StripeContainer price={price[0]} switchCheckout={switchCheckout} book={book} />
-                </>}
+                    <div className='stripe'>
+                        <StripeContainer price={price[0]} switchCheckout={switchCheckout} book={book} />
+                    </div>
+                </div>}
 
             </div>
         </div>

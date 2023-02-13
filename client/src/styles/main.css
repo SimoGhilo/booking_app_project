@@ -55,16 +55,22 @@ filter: grayscale(0);
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    width: 100%;
 }
 
 .country{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     position: relative;
+    width: fit-content;
 }
 
 .country img {
-    width: 30rem;
-    height: 20rem;
+    width:  30rem; 
+    height:  20rem; 
     box-shadow: 2px  2px 2px gray;
     margin-bottom: 0.4rem;
     filter: grayscale(0%);
@@ -105,6 +111,35 @@ h4{
         display: none;
     }
 
+
+    .countries {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    
+    .country{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        width: fit-content;
+    }
+
+    .text{
+        position: relative;
+        left: 0rem;
+    }
+    
+    .country img {
+        width:  20rem;
+        height: 15rem;
+    }
+
     .country img{
         margin-top: 4rem;
     }
@@ -126,6 +161,12 @@ h4{
 /* tablet */
 
 @media screen and (min-width:480px) and (max-width:900px) {
+
+
+    .text{
+        position: relative;
+        left: 0rem;
+    }
 
     .country img{
         margin-top: 4rem;

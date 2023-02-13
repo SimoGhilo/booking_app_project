@@ -101,9 +101,7 @@ const HotelDetails = (props) => {
                                             <tr>
                                                 {rooms[key].room_capacity >= props.guests && (
                                                     <>
-                                                        <td><p>{[...room_name][0]}</p></td>
-                                                        { /* displaying room name not duplicated */}
-                                                        {/*<td><p>{rooms[key].room_name}</p></td>*/}
+                                                        <td><p>{rooms[key].room_name}</p></td>
                                                         <td><p>{rooms[key].room_capacity}</p></td>
                                                         {props.lengthStay > 0 && <td><p> £ {(rooms[key].room_rate) * props.lengthStay}</p></td>}
                                                         {loginStatus === true && <><td className='book'><Link to={`/${rooms[key].hotel_id}/${rooms[key].room_id}/checkout`} style={linkStyle} onClick={switchCheckout}><p>Book</p></Link></td></>}

@@ -1,10 +1,19 @@
+.App{
+    /* display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center; */
+}
+
 
 .navbar{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    background-color: hsl(345, 72%, 70%)
+    background-color: hsl(345, 72%, 70%);
+    width: 100%;    
 }
 
 .menu{  
@@ -91,10 +100,28 @@ button{
 	border: none;
 }
 
+.search-compon{
+    width: 100%;
+}
+
+.content{
+    width: 100%;
+}
+
 
 /* mobile */
 
 @media screen and (max-width:480px) {
+    
+    
+.search-compon{
+    width: 100%;
+}
+
+.content{
+    width: 100%;
+}
+
 
 }
 

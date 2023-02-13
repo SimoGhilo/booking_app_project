@@ -102,7 +102,7 @@ const PaymentForm = (props) => {
                             <CardElement options={CARD_OPTIONS} />
                         </div>
                     </fieldset>
-                    <button className='bookNow'><p>Complete booking</p></button>
+                    <button className='bookNow'>Complete booking</button>
                 </form>) :
                 (<div>
                     <h2>Payment Successful!</h2>

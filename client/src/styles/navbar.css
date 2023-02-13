@@ -5,6 +5,7 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     background-color: hsl(345, 72%, 70%);
+    width: 100%;
     
 }
 
@@ -109,7 +110,7 @@
     }
 
     .menu { position: relative;
-        right: 10rem;
+        right: 6rem;
         bottom: 3rem;
      }
 }

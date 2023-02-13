@@ -9,19 +9,19 @@ const Country = (props) => {
             <h2>{props.name}</h2>
             <Carousel itemsToShow={2}>
                 <div className='img-container'>
-                    <img style={{ height: "30rem", width: "22rem" }} src={props.img1} />
+                    <img style={{ height: "35rem", width: "26rem" }} src={props.img1} />
                     <figcaption><p>{props.description1}</p></figcaption>
                 </div>
                 <div className='img-container'>
-                    <img style={{ height: "30rem", width: "22rem" }} src={props.img2} />
+                    <img style={{ height: "35rem", width: "26rem" }} src={props.img2} />
                     <figcaption><p>{props.description2}</p></figcaption>
                 </div>
                 <div className='img-container'>
-                    <img style={{ height: "30rem", width: "22rem" }} src={props.img3} />
+                    <img style={{ height: "35rem", width: "26rem" }} src={props.img3} />
                     <figcaption><p>{props.description3}</p></figcaption>
                 </div>
                 <div className='img-container'>
-                    <img style={{ height: "30rem", width: "22rem" }} src={props.img4} />
+                    <img style={{ height: "35rem", width: "26rem" }} src={props.img4} />
                     <figcaption><p>{props.description4}</p></figcaption>
                 </div>
             </Carousel>

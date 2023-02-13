@@ -34,17 +34,28 @@ const Register = (props) => {
             user_password: hashedPassword
         }
 
-        await fetch(url, {
-            method: 'POST',
-            credentials: 'include',
-            mode: 'cors',
-            headers: {
-                'content-type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(payload)
+        try {
 
-        })
+            await fetch(url, {
+                method: 'POST',
+                credentials: 'include',
+                mode: 'cors',
+                headers: {
+                    'content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+
+            })
+
+        } catch (error) {
+
+            console.error(error)
+            alert(`Error registering user: ${error.message}`)
+
+        }
+
+
         setRegistered(true);
 
     }

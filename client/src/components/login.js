@@ -60,6 +60,7 @@ const Login = (props) => {
         } else {
 
             console.log('Invalid credentials or error: ' + result.status);
+            alert('Email or password incorrect')
         }
     }
 
