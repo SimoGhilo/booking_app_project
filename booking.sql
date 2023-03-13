@@ -268,6 +268,7 @@ COPY public.bookings (booking_id, user_id, hotel_id, room_id, check_in_date, che
 54	27	4	4	2023-02-26	2023-02-28	700	2	1	Stanza Doppia
 55	27	4	18	2023-02-26	2023-02-28	700	2	1	Stanza Doppia
 56	27	6	2	2023-02-13	2023-02-14	70	1	1	Doble habitaction
+62	27	3	8	2023-03-16	2023-03-18	180	2	1	Single Room
 \.
 
 
@@ -346,7 +347,7 @@ COPY public.users (user_id, user_name, email, user_password) FROM stdin;
 -- Name: bookings_booking_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bookings_booking_id_seq', 61, true);
+SELECT pg_catalog.setval('public.bookings_booking_id_seq', 62, true);
 
 
 --
@@ -374,7 +375,7 @@ SELECT pg_catalog.setval('public.rooms_room_id_seq', 13, true);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 29, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 45, true);
 
 
 --
@@ -415,6 +416,14 @@ ALTER TABLE ONLY public.locations
 
 ALTER TABLE ONLY public.rooms
     ADD CONSTRAINT rooms_pkey PRIMARY KEY (room_id);
+
+
+--
+-- Name: users unique_email; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT unique_email UNIQUE (email);
 
 
 --
