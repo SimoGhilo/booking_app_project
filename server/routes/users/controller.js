@@ -28,10 +28,14 @@ const createUser = (req, res) => {
     const { user_password } = req.body;
     try {
         pool.query(`insert into users(user_name,email,user_password) values('${user_name}','${email}','${user_password}')`, (err, result) => {
+            if (err) {
+                console.log("an error occurred, please try again");
+                return;
+            }
             res.status(200).json(result.rows);
         })
-    } catch (error) {
-        console.error(error.message);
+    } catch (err) {
+        console.error(err.message);
     }
 };
 

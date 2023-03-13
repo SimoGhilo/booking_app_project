@@ -3,6 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/register.css';
 var bcrypt = require('bcryptjs');
 
+
+/// helper funtion to validate email using regex pattern
+
+const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+};
+
 const Register = (props) => {
 
 
@@ -26,6 +37,11 @@ const Register = (props) => {
 
     async function register() {
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        if (!validateEmail(email)) {
+            alert('Please enter valid email');
+            return;
+        }
 
         const url = 'http://localhost:5000/users'
         const payload = {
@@ -51,7 +67,7 @@ const Register = (props) => {
         } catch (error) {
 
             console.error(error)
-            alert(`Error registering user: ${error.message}`)
+            alert(`Error registering user, please try again`);
 
         }
 
